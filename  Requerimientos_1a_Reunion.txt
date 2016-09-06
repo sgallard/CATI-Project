@@ -1,0 +1,75 @@
+Requerimientos Proyecto ANAL:
+	Gonzalo Amestica
+	Diego	
+
+	Encargados de proyecto Depto Industrias
+	Profesores
+
+	> Levantamiento desde la fuente primaria
+		> En terreno, no sirve algo estático
+
+	Desarrollo de SW CATI (Suerte de Call Center)
+					Computer Assistance Telephone Interview
+
+	Antiguamente:
+	Call Center:
+	 > Leer numero en un excel, llamar de manera manual
+	 > Manualmente se debía verificar si se llamó
+	 	> Esto provoca repetición en llamadas a contactos, y en unificar bases de datos y encuestas de diferentes proveedores
+	 > Se enviaba encuesta por correo, y por telefono se presionaba.
+
+	 > Internet USM penca
+	
+	Antecedentes:
+	> Actualización Laboratorio de Docencia e Investigación
+		> 4 puestos de trabajo + 1 especial
+
+	Objetivos:
+		> Remodelar e implementar sala laboratorio
+		> IMPLEMENTACION SW ACORDE AL DESARROLLO DE ACT RELACIONADAS AL LABORATORIO Y DESARROLLO DE PROYECTOS
+		> IMPLEMENTACION DE HERRAMIENTAS DE CONTROL EN TIEMPO REAL PARA GARANTIZAR LA EFICACIA Y LECTURA DE REPORTES, METRICAS...
+
+	CREACION DE PROYECTOS 
+	> BD van por proyecto, por lo que es ideal que primero el Admin pueda crear primero proyecto y luego cargar BD 
+
+	Requerimientos:
+		> Desarrollo SW administrar laboratorio CATI
+		> Telefonía VoIP
+		> Posteriormente, grabacion de llamadas
+
+	Consideraciones:
+		> Considerar Horario de llamada
+		> Seria buena idea quien esta llamando y saber estadisticas de él. -> Al parecer muy importante
+		> Seria bueno  que admin pueda editar encuestas -> Dejar registro de ello
+		> Seria bueno llamadas simultaneas, aunque tener en cuenta dificultades fisicas de ello (Podria molestar una doble llamada)
+
+
+	Actores:
+		> Admin : nombre, rut, correo -> Mayor seguridad
+		> Usuario: nombre , rut , correo
+
+		Admin debe:
+			> Cargar BD con personas y numeros de telefono a contactar (Excel, spss, etc)
+			> Cargar encuesta o formulario onlinea para ser contestada durante la llamada (surveymonkey, etc)
+				> Contestar mientras habla
+			> Revisar periodicamente estado de contactos de la BD (OK, error, no existe, no contesta , equivocado)
+			> Revisar y exportar audio de llamadas (mp3, etc)
+
+		Usuario debe:
+			> Debe poder llamar a telefono usando la BD (Ve en pantalla como mínimo: nombre, numero, estado, llamar, colgar)
+				> NO DEBE VER USUARIOS QUE YA FUERON LLAMADOS
+
+			> Llenar una encuesta o form online segun lo que responde la persona que esta llamando -> Al presionar "llamar" llenar encuesta
+				> No es necesario seguir usando SMonkey, pero la idea es que sea amigable para el usuario.
+
+			> Al finalizar la llamada: (Curso normal o alternativo)
+				> Ingresar estado del contacto en la BD (OK, error, etc)
+				> Vuelta al menú principal, donde aparezca el siguiente número a llamar.
+					> Asignación de llamadas de manera "aleatoria" (?), es decir, se vaya asignando a cada uno de los 4 usuarios.
+
+				> En caso de que usuario no contesta:
+					> Intentar en otro horario
+					> Despues de una cierta cantidad de errores, descartar
+
+				> SI se corta:
+					> Sistema entrega opción de llamar de nuevo
