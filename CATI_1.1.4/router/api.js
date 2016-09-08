@@ -31,7 +31,7 @@ router.get('/usuarios', function(req, res, next) {
 		models.Usuario.findAll().then(function (user) {
 			//for(var x=0;x<user.length;x++){
 			//console.log(user[x].username);
-			res.render('VerUsuario.html', {title: 'Listar Usuarios', resultado: user});
+			res.render('VerUsuario.html', {title: 'Listar Usuarios', resultado: user });
 			//}
 		});
 	} catch (ex) {

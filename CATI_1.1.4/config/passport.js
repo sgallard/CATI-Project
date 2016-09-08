@@ -51,6 +51,7 @@ module.exports = function(passport) {
 
     passport.use('local-signup', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
+
             usernameField : 'email',
             passwordField : 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
@@ -71,14 +72,13 @@ module.exports = function(passport) {
                     // if there is no user with that email
                     // create the user
                     var newUserMysql = new Object();
-
                     newUserMysql.email    = email;
                     newUserMysql.password = password; // use the generateHash function in our user model
 
                     //var insertQuery = "INSERT INTO Usuario (username,email, password ) values (''famancil'+" + email +"','"+ password +"')";
 
                     models.Usuario.create({
-                        username: "asdf",
+                        username: "admin",
                         password: password,
                         email: email
                     }).then(function (result) {
