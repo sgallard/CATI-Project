@@ -12,7 +12,7 @@ var opts = {
         freezeTableName: true
     }
 }
-var sequelize = new Sequelize('Cati', 'root', 'newpass123',opts);
+var sequelize = new Sequelize('Catix ', 'root', 'newpass123',opts);
 var db        = {};
 
 fs
