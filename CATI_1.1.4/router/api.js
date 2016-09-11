@@ -31,7 +31,7 @@ router.get('/contactos', function(req, res, next) {
 		models.contacto.findAll().then(function (user) {
 			//for(var x=0;x<user.length;x++){
 			//console.log(user[x].username);
-			res.render('VerUsuario.html', {title: 'Listar Usuarios', resultado: user });
+			res.render('vercontacto.html', {title: 'Listar Usuarios', resultado: user });
 			//}
 		});
 	} catch (ex) {
@@ -53,7 +53,7 @@ router.get('/usuarios/:id', function(req, res, next) {
 			//for(var x=0;x<user.length;x++){
 			//console.log(user[x].username);
 			//console.log(user.get('username'));
-			res.render('VerUsuario.html', {title: 'Listar Usuarios', resultado: user});
+			res.render('vercontacto.html', {title: 'Listar Usuarios', resultado: user});
 			//}
 		});
 	} catch (ex) {

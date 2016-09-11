@@ -14,7 +14,7 @@ module.exports = function(app, passport) {
     });
 
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/verUsuario', // redirect to the secure profile section
+        successRedirect : '/vercontacto', // redirect to the secure profile section
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -30,7 +30,11 @@ module.exports = function(app, passport) {
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
-
+    app.get('/vercontactos', isLoggedIn, function(req, res) {
+        res.render('contactos.html', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.html', {
             user : req.user // get the user out of session and pass to template
