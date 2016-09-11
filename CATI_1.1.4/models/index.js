@@ -11,7 +11,7 @@ var opts = {
         //prevent sequelize from pluralizing table names
         freezeTableName: true
     }
-}
+};
 var sequelize = new Sequelize('Cati', 'root', 'newpass123',opts);
 var db        = {};
 

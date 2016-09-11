@@ -1,17 +1,22 @@
-/**
- * Created by famancil on 21-08-16.
- */
+
 "use strict";
 var Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-    var Rol = sequelize.define("Rol", {
-        permiso: DataTypes.STRING
+    var encuesta= sequelize.define("encuesta", {
+        idencuesta:  {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement:true
+        },
+        titulo: DataTypes.STRING
     }, {
+        timestamps:false,
         classMethods: {
             associate: function(models) {
-                Rol.belongsTo(models.Usuario, {
+                encuesta.belongsTo(models.proyecto, {
                     onDelete: "CASCADE",
                     foreignKey: {
+                        name:"idproyecto",
                         allowNull: false
                     }
                 });
@@ -19,5 +24,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    return Rol;
+    return encuesta;
 };
