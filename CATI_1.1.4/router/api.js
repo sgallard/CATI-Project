@@ -31,7 +31,8 @@ router.get('/contactos', function(req, res, next) {
 		models.contacto.findAll().then(function (user) {
 			//for(var x=0;x<user.length;x++){
 			//console.log(user[x].username);
-			res.render('vercontacto.html', {title: 'Listar Usuarios', resultado: user });
+			console.log("aqui");
+			res.render('vercontacto.html', {title: 'Listar contactos', resultado: user });
 			//}
 		});
 	} catch (ex) {

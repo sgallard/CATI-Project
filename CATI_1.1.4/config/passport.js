@@ -32,12 +32,14 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        done(null, user.usuarioadmin);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("select * from administrador where id = "+id,function(err,rows){
+        connection.query("select * from `administrador` WHERE `usuarioadmin` = '"+id+"'",function(err,rows){
+
+            console.log(rows);
             done(err, rows[0]);
         });
     });
@@ -61,7 +63,7 @@ module.exports = function(passport) {
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
             connection.query("select * from administrador where usuarioadmin = '"+usuarioadmin+"'",function(err,rows){
-                console.log(rows);
+
                 //console.log("above row object");
                 if (err)
                     return done(err);
@@ -78,7 +80,7 @@ module.exports = function(passport) {
                     //var insertQuery = "INSERT INTO Usuario (username,email, password ) values (''famancil'+" + email +"','"+ password +"')";
 
                     models.administrador.create({
-                        usuarioadm: usuarioadmin,
+                        usuarioadmin: usuarioadmin,
                         contrasena: contrasena,
                         email: email
                     }).then(function (result) {
@@ -107,12 +109,12 @@ module.exports = function(passport) {
     passport.use('local-login', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField : 'usuario',
-            passwordField : 'password',
+            passwordField : 'contraseña',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
-        function(req, usuario, password, done) { // callback with email and password from our form
+        function(req, username, password, done) { // callback with email and password from our form
+            connection.query("SELECT * FROM `administrador` WHERE `usuarioadmin` = '" + username + "'",function(err,rows){
 
-            connection.query("SELECT * FROM `administrador` WHERE `usuarioadmin` = '" + usuario + "'",function(err,rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {
@@ -120,7 +122,7 @@ module.exports = function(passport) {
                 }
 
                 // if the user is found but the password is wrong
-                if (!( rows[0].password == password))
+                if (!( rows[0].contrasena == password))
                     return done(null, false, req.flash('loginMessage', 'Oops! contrasena erronea.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user

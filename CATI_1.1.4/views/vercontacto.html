@@ -97,7 +97,7 @@
   <% for (var i= 0;i<resultado.length;i++){ %>
   <tbody>
   <tr>
-    <td><%= resultado[i].rut%></td>
+    <td><%= resultado[i].rutcontacto%></td>
     <td><%= resultado[i].nombre%></td>
     <td><%= resultado[i].direccion %></td>
     <td><%= resultado[i].numero %></td>
@@ -106,6 +106,8 @@
   </tr>
   <% }%>
   </tbody>
+
+  <a href="/cargarcontactos">Cargar contactos</a>
 </table>
 
 

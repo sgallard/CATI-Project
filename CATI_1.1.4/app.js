@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 
 // required for passport
-app.use(session({ secret: 'fiswadsw' })); // session secret
+app.use(session({ secret: 'fiswadsw' ,resave : true,  saveUninitialized: true})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

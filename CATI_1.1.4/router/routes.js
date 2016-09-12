@@ -7,6 +7,10 @@ module.exports = function(app, passport) {
     app.get('/', function (req, res) {
         res.render('index.html', {title: 'CATI Beta '});
     });
+    app.get('/cargarcontactos', function(req, res) {
+        // render the page and pass in any flash data if it exists
+        res.render('cargarcontactos.html', { message: req.flash('loginMessage') });
+    });
 
     app.get('/login', function(req, res) {
         // render the page and pass in any flash data if it exists
@@ -15,7 +19,7 @@ module.exports = function(app, passport) {
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/vercontacto', // redirect to the secure profile section
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
+        failureRedirect : '/', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 
@@ -31,7 +35,7 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
     app.get('/vercontactos', isLoggedIn, function(req, res) {
-        res.render('contactos.html', {
+        res.render('vercontacto.html', {
             user : req.user // get the user out of session and pass to template
         });
     });
@@ -47,8 +51,9 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/verUsuario',isLoggedIn, function (req, res) {
-        res.redirect('/api/usuarios');
+    app.get('/vercontacto',isLoggedIn, function (req, res) {
+        console.log("aca");
+        res.redirect('/api/contactos');
     });
 
     app.get('/crearUsuario',isLoggedIn, function (req, res) {
@@ -57,7 +62,7 @@ module.exports = function(app, passport) {
 }
 
 function isLoggedIn(req, res, next) {
-
+    console.log("here");
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
