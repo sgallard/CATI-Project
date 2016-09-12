@@ -38,8 +38,6 @@ module.exports = function(passport) {
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         connection.query("select * from `administrador` WHERE `usuarioadmin` = '"+id+"'",function(err,rows){
-
-            console.log(rows);
             done(err, rows[0]);
         });
     });
@@ -131,6 +129,22 @@ module.exports = function(passport) {
             });
 
 
+
+        }));
+
+    passport.use('cargar-contactos', new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            archiveField : 'archivo',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+
+        function(req, archive, done) { // callback with email and password from our form
+            connection.query("LOAD DATA LOCAL INFILE" + archive + "INTO TABLE usuario FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;", function(err) {
+                if (!err)
+                    console.log('All good.');
+                else
+                    console.log('Error while performing Query.');
+            });
 
         }));
 

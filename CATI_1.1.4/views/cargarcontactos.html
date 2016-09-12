@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <title> Cargar</title>
 </head>
-<body>
-<a>Inserte el archivo csv</a>
-<input type="file" accept=".csv" />
-</body>
+    <body>
+        <a>Inserte el archivo csv</a>
+
+
+        <form action="/cargarcontactos" method="post" encType="multipart/form-data">
+            <input type="text" class="form-control" name="path">
+            <input type="file" class="form-control" name="sampleFile" accept=".csv" />
+            <button type="submit" class="btn btn-warning btn-lg">Cargar</button>
+        </form>
+
+
+    </body>
 </html>

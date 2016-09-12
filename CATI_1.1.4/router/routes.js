@@ -1,6 +1,13 @@
 /**
  * Created by famancil on 21-08-16.
  */
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'newpass123',
+    database : 'Cati'
+});
 
 module.exports = function(app, passport) {
 
@@ -50,9 +57,25 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
+    app.post('/cargarcontactos', function(req, res) {
+        var sampleFile;
+        if (!req.files) {
+            res.send('No files were uploaded.');
+            return;
+        }
+        oText = oForm.elements["path"];
+        connection.connect();
+        sampleFile = req.files.sampleFile;
+        connection.query("LOAD DATA LOCAL INFILE '" + oText.value + sampleFile.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;", function(err) {
+            if (!err)
+                console.log('All good.');
+            else
+                console.log('Error while performing Query.');
+        });
+    });
+
 
     app.get('/vercontacto',isLoggedIn, function (req, res) {
-        console.log("aca");
         res.redirect('/api/contactos');
     });
 
@@ -62,7 +85,6 @@ module.exports = function(app, passport) {
 }
 
 function isLoggedIn(req, res, next) {
-    console.log("here");
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
