@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "angular": "^1.5.8",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.15.2",
     "connect-flash": "~0.1.1",
@@ -24,6 +25,7 @@
     "passport-twitter": "~1.0.4",
     "sequelize": "^3.24.2"
   },
+
   "author": "Ayudantes ASDW/FISW 2016-2",
   "license": "ISC"
 }

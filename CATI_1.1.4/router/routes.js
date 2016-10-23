@@ -1,6 +1,4 @@
-/**
- * Created by famancil on 21-08-16.
- */
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
@@ -9,11 +7,13 @@ var connection = mysql.createConnection({
     database : 'Cati'
 });
 
+
 module.exports = function(app, passport) {
 
     app.get('/', function (req, res) {
         res.render('index.html', {title: 'CATI Beta '});
     });
+
     app.get('/cargarcontactos', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('cargarcontactos.html', { message: req.flash('loginMessage') });
@@ -23,13 +23,26 @@ module.exports = function(app, passport) {
         // render the page and pass in any flash data if it exists
         res.render('login.html', { message: req.flash('loginMessage') });
     });
+    app.get('/loginencuestador', function(req, res) {
+        // render the page and pass in any flash data if it exists
+        res.render('loginencuestador.html', { message: req.flash('loginMessage') });
+    });
+
 
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/vercontacto', // redirect to the secure profile section
+        successRedirect : '/api/verencuestadores', // redirect to the secure profile section
         failureRedirect : '/', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 
+    app.post('/loginencuestador', passport.authenticate('local-login-encuestador', {
+
+        successRedirect : '/api/contactos', // redirect to the secure profile section
+        failureRedirect : '/', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+
+    /*
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('signup.html', { message: req.flash('signupMessage') });
@@ -41,12 +54,21 @@ module.exports = function(app, passport) {
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
-    app.get('/vercontactos', isLoggedIn, function(req, res) {
+
+    */
+    app.get('/vercontactos_encuestador', isLoggedInEncuestador  , function(req, res) {
+
+        res.render('vercontactos_encuestador.html', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+    app.get('/vercontactos', isLoggedInAdmin, function(req, res) {
         res.render('vercontacto.html', {
             user : req.user // get the user out of session and pass to template
         });
     });
-    app.get('/profile', isLoggedIn, function(req, res) {
+
+    app.get('/profile', isLoggedInAdmin, function(req, res) {
         res.render('profile.html', {
             user : req.user // get the user out of session and pass to template
         });
@@ -58,37 +80,74 @@ module.exports = function(app, passport) {
     });
 
     app.post('/cargarcontactos', function(req, res) {
-        var sampleFile;
+        var archivoContactos;
+        var fs;
+        var localizacion;
+
         if (!req.files) {
             res.send('No files were uploaded.');
             return;
         }
-        oText = oForm.elements["path"];
+
+        archivoContactos = req.files.archivox;
+        console.log(archivoContactos.name);
+        localizacion = __dirname;
+        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/');
+        console.log(__dirname);
+        console.log(localizacion);
+
         connection.connect();
-        sampleFile = req.files.sampleFile;
-        connection.query("LOAD DATA LOCAL INFILE '" + oText.value + sampleFile.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;", function(err) {
-            if (!err)
+        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;", function(err) {
+            if (!err) {
                 console.log('All good.');
+                res.send('Se ha subido el archivo');
+            }
             else
                 console.log('Error while performing Query.');
+            res.send('Error al subir archivo.');
         });
     });
 
-
-    app.get('/vercontacto',isLoggedIn, function (req, res) {
+    app.get('/vercontacto',isLoggedInEncuestador, function (req, res) {
         res.redirect('/api/contactos');
     });
-
-    app.get('/crearUsuario',isLoggedIn, function (req, res) {
-        res.render('CrearUsuario.html', {title: 'Registrar Usuarios'});
+    app.get('/crearencuestador',isLoggedInAdmin, function (req, res) {
+        res.render('crearencuestador.html');
     });
-}
 
-function isLoggedIn(req, res, next) {
+
+    app.get('/verencuestadores',isLoggedInAdmin, function (req, res) {
+        res.redirect('/api/verencuestadores');
+
+    });
+
+    app.get('/crearUsuario',isLoggedInAdmin, function (req, res) {
+        res.render('crearencuestador.html', {title: 'Registrar Usuarios'});
+    });
+};
+
+function isLoggedInAdmin(req, res, next) {
     // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
+    if (req.user!=undefined) {
+        if (req.user.usuarioadmin != undefined)
+            return next();
+    }
+    console.log("falso admin");
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+
+function isLoggedInEncuestador(req, res, next) {
+    // if user is authenticated in the session, carry on
+    console.log(req.user);
+    if (req.user!=undefined) {
+        if (req.user.usuarioencuestador != undefined)
+            return next();
+        console.log("falso encuestador");
+    }
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
+
+

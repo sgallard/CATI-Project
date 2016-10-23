@@ -5,10 +5,8 @@ var mysql = require('mysql');
 var url = require('url');
 //var Usuario = require('../models/usuario.js');
 //var Rol= require('../models/rol.js');
-var contacto= require('../models/contacto.js');
+//var contacto= require('../models/contacto.js');
 var models  = require('../models');
-
-
 
 // Routes
 /*router.get('/usuarios', function(req,res){
@@ -23,7 +21,7 @@ var models  = require('../models');
 module.exports = router;
 
 
-//GET usuarios
+//GET contactos
 router.get('/contactos', function(req, res, next) {
 	try {
 		/*var query = url.parse(req.url,true).query;
@@ -31,10 +29,26 @@ router.get('/contactos', function(req, res, next) {
 		models.contacto.findAll().then(function (user) {
 			//for(var x=0;x<user.length;x++){
 			//console.log(user[x].username);
-			console.log("aqui");
 			res.render('vercontacto.html', {title: 'Listar contactos', resultado: user });
 			//}
 		});
+	} catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+});
+router.get('/verencuestadores', function(req, res, next) {
+	try {
+		/*var query = url.parse(req.url,true).query;
+		 console.log(query);*/
+		models.encuestador.findAll().then(function (user) {
+			//for(var x=0;x<user.length;x++){
+			//console.log(user[x].username);
+			res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user});
+			//res.json(user);
+			//}
+		});
+		//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
 	} catch (ex) {
 		console.error("Internal error:" + ex);
 		return next(ex);
@@ -64,26 +78,26 @@ router.get('/usuarios/:id', function(req, res, next) {
 });
 
 //POST crear usuario
-/*router.post('/usuarios', function(req,res,next){
+router.post('/crearencuestador', function(req,res,next){
 try{
 	console.log(req.body.permiso);
-	models.Usuario.create({
-		username: req.body.username,
-		password: req.body.password,
-		email: req.body.email
-	}).then(function (result) {
+	models.encuestador.create({
+		usuarioencuestador: req.body.usuarioencuestador,
+		nombre: req.body.nombre,
+		contrasena: req.body.contrasena
+	}); /*.then(function (result) {
 		models.Rol.create({
 			permiso: req.body.permiso,
 			UsuarioId: result.id
-		});
-		res.redirect("/");
-	});
+		}); }); */
+		res.redirect("/verencuestadores");
+
 	}
 	catch(ex){
 	console.error("Internal error:"+ex);
 	return next(ex);
 	}
-}); ¸*/
+});
 
 router.put('/usuarios/:id', function(req,res,next){
 	try{
@@ -117,10 +131,10 @@ router.put('/usuarios/:id', function(req,res,next){
 	}
 });
 
-router.delete('/usuarios/:id', function(req,res,next){
-	try{
-		models.Usuario.destroy({where: {id: req.params.id} }).then(function () {
-			return models.Usuario.findAll().then(function (user) {
+router.post('/eliminarencuestador', function(req,res,next){
+	try{console.log(req.params);
+		models.encuestador.destroy({where: {usuarioencuestador: req.params.usuarioencuestador} }).then(function () {
+			return models.encuestador.findAll().then(function (user) {
 				res.json(user);
 			})
 		})
@@ -130,4 +144,5 @@ router.delete('/usuarios/:id', function(req,res,next){
 		return next(ex);
 	}
 });
+
 

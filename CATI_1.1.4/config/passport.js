@@ -7,7 +7,7 @@
 
 var models  = require('../models');
 
-
+var tipo;
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 
@@ -32,13 +32,30 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user.usuarioadmin);
+        console.log("serialais");
+        if(user.usuarioadmin){
+            tipo="admin";
+            done(null, user.usuarioadmin);}
+        else if(user.usuarioencuestador){
+            tipo="encuestador";
+            done(null, user.usuarioencuestador);}
+
+
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("select * from `administrador` WHERE `usuarioadmin` = '"+id+"'",function(err,rows){
-            done(err, rows[0]);
+        connection.query("select * from `encuestador` WHERE `usuarioencuestador` = '"+id+"'",function(err,rows){
+            if  (rows[0]==undefined && tipo=="admin"){
+                console.log("admin");
+                connection.query("select * from `administrador` WHERE `usuarioadmin` = '"+id+"'",function(err,rows){
+                    done(err, rows[0]);
+
+                });
+            }
+            else{
+                console.log("encuestador");
+                done(err, rows[0]);}
         });
     });
 
@@ -49,7 +66,7 @@ module.exports = function(passport) {
     // we are using named strategies since we have one for login and one for signup
     // by default, if there was no name, it would just be called 'local'
 
-    passport.use('local-signup', new LocalStrategy({
+    /*passport.use('local-signup', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
 
             usernameField : 'usuarioadmin',
@@ -93,10 +110,10 @@ module.exports = function(passport) {
                         newUserMysql.id = rows.id;
 
                         return done(null, newUserMysql);
-                    });*/
+                    });
                 }
             });
-        }));
+        }));*/
 
     // =========================================================================
     // LOCAL LOGIN =============================================================
@@ -132,7 +149,38 @@ module.exports = function(passport) {
 
         }));
 
-    passport.use('cargar-contactos', new LocalStrategy({
+    passport.use('local-login-encuestador', new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField : 'usuario',
+            passwordField : 'contraseña',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, username, password, done) { // callback with email and password from our form
+            connection.query("SELECT * FROM `encuestador` WHERE `usuarioencuestador` = '" + username + "'",function(err,rows){
+
+                if (err)
+                    return done(err);
+                if (!rows.length) {
+                    return done(null, false, req.flash('loginMessage', 'encuestador no encontrado.')); // req.flash is the way to set flashdata using connect-flash
+                }
+
+                // if the user is found but the password is wrong
+                if (!( rows[0].contrasena == password))
+                    return done(null, false, req.flash('loginMessage', 'Oops! contraseña erronea.')); // create the loginMessage and save it to session as flashdata
+
+                // all is well, return successful user
+                return done(null, rows[0]);
+
+            });
+
+
+
+        }));
+
+
+
+
+    /*passport.use('cargar-contactos', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             archiveField : 'archivo',
             passReqToCallback : true // allows us to pass back the entire request to the callback
@@ -147,5 +195,6 @@ module.exports = function(passport) {
             });
 
         }));
+        */
 
 };
