@@ -131,6 +131,10 @@ module.exports = function(app, passport) {
     app.get('/crearUsuario',isLoggedInAdmin, function (req, res) {
         res.render('crearencuestador.html', {title: 'Registrar Usuarios'});
     });
+    app.get('/verproyectos',isLoggedInAdmin, function (req, res) {
+        res.redirect('/api/verproyectos');
+
+    });
 };
 
 function isLoggedInAdmin(req, res, next) {

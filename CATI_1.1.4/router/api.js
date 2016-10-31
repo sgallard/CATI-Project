@@ -146,6 +146,25 @@ router.put('/usuarios/:id', function(req,res,next){
 		return next(ex);
 	}
 });
+router.get('/verproyectos', function(req, res, next) {
+	try {
+		/*var query = url.parse(req.url,true).query;
+		 console.log(query);*/
+		models.proyecto.findAll().then(function (user) {
+			//for(var x=0;x<user.length;x++){
+			//console.log(user[x].username);
+			res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});
+			//res.json(user);
+			//}
+		});
+		//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
+	} catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+});
+
+
 
 router.post('/eliminarencuestador', function(req,res,next){
 	try{console.log(req.params);
