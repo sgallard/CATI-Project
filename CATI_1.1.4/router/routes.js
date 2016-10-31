@@ -19,6 +19,14 @@ module.exports = function(app, passport) {
         res.render('cargarcontactos.html', { message: req.flash('loginMessage') });
     });
 
+    app.get('/encuestador', function(req, res) {
+        // render the page and pass in any flash data if it exists
+        var id = req.query.id;
+        res.redirect('/api/encuestador/'+id);
+       // res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user});
+       // res.render('encuestador.html', { message: req.flash('loginMessage') });
+    });
+
     app.get('/login', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('login.html', { message: req.flash('loginMessage') });
@@ -88,7 +96,6 @@ module.exports = function(app, passport) {
             res.send('No files were uploaded.');
             return;
         }
-
         archivoContactos = req.files.archivox;
         console.log(archivoContactos.name);
         localizacion = __dirname;

@@ -54,6 +54,22 @@ router.get('/verencuestadores', function(req, res, next) {
 		return next(ex);
 	}
 });
+
+router.get('/encuestador/:id', function(req, res ,next){
+	console.log(req.params.id);
+	try {
+		models.encuestador.findAll(({
+			where: {
+				usuarioencuestador: req.params.id
+			}
+		})).then(function (user) {
+			console.log("aylmao2");
+			res.render('encuestador.html', { id_usuario: req.params.id });
+		});
+	} catch (ex){
+		console.log("Id incorrecto.");
+	}
+});
 //GET un usuario con id determinado
 router.get('/usuarios/:id', function(req, res, next) {
 	try {
