@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CATI</title>
+
+    <!-- Bootstrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.misn.js"></script>
+    <script  src="/node_modules/angular/angular.js"></script>
+    <script  src="/node_modules/angular/angular.min.js"></script>
+    <script src="/controllers/encuestadores.js"></script>
+
+</head>
+<body ng-app="Cati"  ng-controller="encuestadores">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/verUsuario">Ver Usuario</a></li>
+                        <li><a href="/crearUsuario">Crear Usuario</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Ver Perfil</a></li>
+                        <li><a href="/logout">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div>
+    <h1>title</h1>
+</div>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> nombre </th>
+        <!--<th> Rut </th>-->
+        <th> Eliminar </th>
+        <th>  </th>
+
+    </tr>
+    </thead>
+    <% for (var i= 0;i< resultado.length;i++){ %>
+    <tbody>
+    <tr>
+        <td><%= resultado[i].idproyecto%></td>
+        <td><%= resultado[i].nombre%></td>
+        <!--<td><%= resultado[i].rut%></td>-->
+        <td> <a href="/modificarproyecto">Modificar</a> </td>
+        <td>
+            <form class="form-horizontal" action="/api/eliminarproyecto/<%= resultado[i].idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <div class="col-lg-3">
+                        <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="idproyecto">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </td>
+        <td>
+
+            <a href="/verproyecto">Ver proytectos</a>
+        </td>
+
+
+    </tr>
+    <% }%>
+    </tbody>
+
+    <a href="/vercontactos">Cargar contactos</a>
+
+    <a href="/crearencuestador">                    Crear encuestador</a>
+</table>
+
+
+</body>
+</html>
