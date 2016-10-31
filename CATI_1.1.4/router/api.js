@@ -166,9 +166,9 @@ router.get('/verproyectos', function(req, res, next) {
 
 
 
-router.post('/eliminarencuestador', function(req,res,next){
+router.post('/eliminarencuestador/:id', function(req,res,next){
 	try{console.log(req.params);
-		models.encuestador.destroy({where: {usuarioencuestador: req.params.usuarioencuestador} }).then(function () {
+		models.encuestador.destroy({where: {usuarioencuestador: req.params.id} }).then(function () {
 			return models.encuestador.findAll().then(function (user) {
 				res.json(user);
 			})
