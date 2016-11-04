@@ -118,8 +118,14 @@ module.exports = function(app, passport) {
     app.get('/vercontacto',isLoggedInEncuestador, function (req, res) {
         res.redirect('/api/contactos');
     });
+    app.get('/verproyecto/:id',isLoggedInAdmin, function (req, res) {
+        res.render('proyecto.html',{idproyecto: req.params.id});
+    });
     app.get('/crearencuestador',isLoggedInAdmin, function (req, res) {
         res.render('crearencuestador.html');
+    });
+    app.get('/crearproyecto',isLoggedInAdmin, function (req, res) {
+        res.render('crearproyecto.html');
     });
     app.get('/modificarencuestador/:id',isLoggedInAdmin, function (req, res) {
         res.render('modificarencuestador.html',{usuarioencuestador: req.params.id});

@@ -70,6 +70,7 @@ module.exports = router;
 			console.log("Id incorrecto.");
 		}
 	});
+
 //GET un usuario con id determinado
 	router.get('/usuarios/:id', function (req, res, next) {
 		try {
@@ -114,9 +115,28 @@ module.exports = router;
 			return next(ex);
 		}
 	});
+router.post('/crearproyecto', function (req, res, next) {
+    try {
+        models.proyecto.create({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion
+        });
+        /*.then(function (result) {
+         models.Rol.create({
+         permiso: req.body.permiso,
+         UsuarioId: result.id
+         }); }); */
+        res.redirect("/verproyectos");
 
+    }
+    catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});
 	router.put('/usuarios/:id', function (req, res, next) {
 		try {
+
 
 			models.Usuario.findOne({where: {id: req.params.id}}).then(function (user) {
 				//for(var x=0;x<user.length;x++){
@@ -202,5 +222,17 @@ module.exports = router;
 			return next(ex);
 		}
 	});
-
+router.post('/eliminarproyecto/:id', function (req, res, next) {
+    try {console.log(req.params.id);
+        models.proyecto.destroy({where: {idproyecto: req.params.id}}).then(function () {
+            return models.proyecto.findAll().then(function (user) {
+                res.json(user);
+            })
+        })
+    }
+    catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});
 

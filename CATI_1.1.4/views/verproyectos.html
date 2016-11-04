@@ -66,7 +66,7 @@
 
 
 <div>
-    <h1>title</h1>
+    <h1>Proyectos</h1>
 </div>
 
 
@@ -76,9 +76,9 @@
         <th> ID </th>
         <th> nombre </th>
         <!--<th> Rut </th>-->
-        <th> Eliminar </th>
         <th>  </th>
-
+        <th>  </th>
+        <th>  </th>
     </tr>
     </thead>
     <% for (var i= 0;i< resultado.length;i++){ %>
@@ -89,28 +89,28 @@
         <!--<td><%= resultado[i].rut%></td>-->
         <td> <a href="/modificarproyecto">Modificar</a> </td>
         <td>
+
+            <a href="/verproyecto/<%= resultado[i].idproyecto%>">Ver proyecto</a>
+        </td>
+        <td>
             <form class="form-horizontal" action="/api/eliminarproyecto/<%= resultado[i].idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <div class="col-lg-3">
-                        <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="idproyecto">
+                        <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="idproyecto"> Eliminar
                         </button>
                     </div>
                 </div>
             </form>
         </td>
-        <td>
 
-            <a href="/verproyecto">Ver proytectos</a>
-        </td>
 
 
     </tr>
     <% }%>
     </tbody>
 
-    <a href="/vercontactos">Cargar contactos</a>
 
-    <a href="/crearencuestador">                    Crear encuestador</a>
+    <a href="/crearproyecto">                    Crear proyecto</a>
 </table>
 
 
