@@ -1,4 +1,3 @@
-
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
@@ -64,6 +63,7 @@ module.exports = function(app, passport) {
     }));
 
     */
+
     app.get('/vercontactos_encuestador', isLoggedInEncuestador  , function(req, res) {
 
         res.render('vercontactos_encuestador.html', {
@@ -121,11 +121,16 @@ module.exports = function(app, passport) {
     app.get('/crearencuestador',isLoggedInAdmin, function (req, res) {
         res.render('crearencuestador.html');
     });
-
+    app.get('/modificarencuestador/:id',isLoggedInAdmin, function (req, res) {
+        res.render('modificarencuestador.html',{usuarioencuestador: req.params.id});
+    });
+    app.post('/modificarencuestador/:id',isLoggedInAdmin, function (req, res) {
+        console.log(req.body);
+        res.redirect('/api/modificarencuestador/'+req.params.id);
+    });
 
     app.get('/verencuestadores',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/verencuestadores');
-
     });
 
     app.get('/crearUsuario',isLoggedInAdmin, function (req, res) {
