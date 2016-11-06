@@ -2,7 +2,7 @@
 <html >
 <head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sistema CATI 1.1.4</title>
+    <title>CATI 1.1.4</title>
 
     <!-- Bootstrap -->
     <meta charset="utf-8">
@@ -31,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Inicio</a>
+            <!--<a class="navbar-brand" href="/">Inicio</a>-->
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,25 +50,25 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proyectos <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/crearproyecto">Crear proyecyo</a></li>
+                            <li><a href="/crearproyecto">Crear proyecto</a></li>
                             <li><a href="/verproyectos">Ver proyectos</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-                    <ul class="nav navbar-nav">
+                    <!--  <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/cargarcontactos">Cargar contactos</a></li>
-                                <li><a href="/vercontactos">Ver contactos</a></li>
-                            </ul>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="/cargarcontactos">Cargar contactos</a></li>
+                            <li><a href="/vercontactos">Ver contactos</a></li>
+                          </ul>
                         </li>
-                    </ul>
+                      </ul> -->
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Admin! <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <!--<li><a href="#">Ver Perfil</a></li>-->
                                 <li><a href="/logout">Cerrar Sesión</a></li>
@@ -77,35 +77,32 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
-           </div>
         </div>
+    </div>
 </nav>
-
-
-
 
 <h3>Modificar a proyecto <%= idproyecto%> </h3>
 
 <form class="form-horizontal" action="/api/modificarproyecto/<%= idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
     <fieldset>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Nombre del proyecto: </label>
+            <label class="col-lg-2 control-label">Nombre: </label>
             <div class="col-lg-3">
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Descripción del proyecto: </label>
+            <label class="col-lg-2 control-label">Descripción: </label>
             <div class="col-lg-3">
-                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion">
+                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
             </div>
         </div>
 
 
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-default">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </div>
     </fieldset>

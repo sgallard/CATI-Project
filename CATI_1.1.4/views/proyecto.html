@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sistema CATI 1.1.4</title>
+    <title>CATI 1.1.4</title>
 
     <!-- Bootstrap -->
     <meta charset="utf-8">
@@ -18,7 +18,9 @@
     <script  src="/node_modules/angular/angular.js"></script>
     <script  src="/node_modules/angular/angular.min.js"></script>
     <script src="/controllers/encuestadores.js"></script>
-
+    <style>
+        div#modificar   { padding-left:20px; float: left; }
+    </style>
 </head>
 <body ng-app="Cati"  ng-controller="encuestadores">
 <nav class="navbar navbar-default">
@@ -31,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Inicio</a>
+            <!--<a class="navbar-brand" href="/">Inicio</a>-->
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,21 +52,21 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proyectos <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/crearproyecto">Crear proyecyo</a></li>
+                            <li><a href="/crearproyecto">Crear proyecto</a></li>
                             <li><a href="/verproyectos">Ver proyectos</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-                    <ul class="nav navbar-nav">
+                    <!--  <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/cargarcontactos">Cargar contactos</a></li>
-                                <li><a href="/vercontactos">Ver contactos</a></li>
-                            </ul>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="/cargarcontactos">Cargar contactos</a></li>
+                            <li><a href="/vercontactos">Ver contactos</a></li>
+                          </ul>
                         </li>
-                    </ul>
+                      </ul> -->
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -81,27 +83,33 @@
     </div>
 </nav>
 <body>
-<%= idproyecto%>
 
-<%= descripcion%>
-
-
-
-<form class="form-horizontal" action="/api/eliminarproyecto/<%= idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
+<h1 style="padding-left:10px">Proyecto: <%= resultado.nombre%></h1>
+<hr>
+<div style="padding-left:20px">
+    <h3>Id proyecto: <%= resultado.idproyecto%></h3>
+    <h3>Descripción: <%= resultado.descripcion%>%></h3>
+</div>
+<br>
+<div id="modificar">
+<a class="btn btn-primary" style="clear:both" href="/cargarcontactos/<%= resultado.idproyecto%>">   Cargar contactos     </a>
+</div>
+<div class="col-lg-3">
+    <a class="btn btn-primary" href="/vercontactosproyecto/<%= resultado.idproyecto%>">   Lista de contactos      </a>
+</div>
+<br style="clear:both">
+<hr>
+<div id="modificar">
+    <a class="btn btn-lg btn-primary" href="/modificarproyecto/<%= resultado.idproyecto%>">Modificar</a>
+</div>
+<form class="form-horizontal" action="/api/eliminarproyecto/<%= resultado.idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
     <div class="form-group">
         <div class="col-lg-3">
-            <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="IDdproyecto">Eliminar
+            <button type="submit" class="btn btn-lg"  id="idproyecto" name="idproyecto" placeholder="IDdproyecto">Eliminar
             </button>
         </div>
     </div>
 </form>
-<form class="form-horizontal" action="/api/modificarproyecto/<%= idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
-    <div class="form-group">
-        <div class="col-lg-3">
-            <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="idproyecto">Modificar
-            </button>
-        </div>
-    </div>
-</form>
+
 </body>
 </html>

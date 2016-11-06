@@ -18,7 +18,9 @@
     <script  src="/node_modules/angular/angular.js"></script>
     <script  src="/node_modules/angular/angular.min.js"></script>
     <script src="/controllers/encuestadores.js"></script>
-
+    <style>
+        div#modificar   { padding-left:20px; float: left; }
+    </style>
 </head>
 <body>
 
@@ -82,20 +84,24 @@
     </div>
 </nav>
 
-<h1>Encuestador: <%= resultado[0].usuarioencuestador %></h1>
-<h3>Nombre: <%= resultado[0].nombre %></h3>
-<h3>Contraseña: <%= resultado[0].contrasena %></h3>
-
-<a class="btn btn-lg btn-warning" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Modificar</a>
-
-<form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
-    <div class="form-group">
-        <div class="col-lg-3">
-            <button type="submit" class="btn btn-lg" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
-            </button>
+<h1 style="padding-left:10px">Encuestador: <%= resultado[0].usuarioencuestador %></h1>
+<hr>
+<div style="padding-left:20px">
+    <h3>Nombre: <%= resultado[0].nombre %></h3>
+    <h3>Contraseña: <%= resultado[0].contrasena %></h3>
+</div>
+<div id="modificar">
+    <a class="btn btn-lg btn-primary" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Modificar</a>
+</div>
+<div id="eliminar">
+    <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
+        <div class="form-group">
+            <div class="col-lg-3">
+                <button type="submit" class="btn btn-lg" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
+                </button>
+            </div>
         </div>
-    </div>
-</form>
-
+    </form>
+</div>
 </body>
 </html>

@@ -109,7 +109,7 @@ router.get('/proyecto/:id', function (req, res, next) {
 				idproyecto: req.params.id
 			}
 		})).then(function (user) {
-			res.render('proyecto.html', {idproyecto: req.params.id ,descripcion: user[0].dataValues.descripcion });
+			res.render('proyecto.html', {resultado: user[0]});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");

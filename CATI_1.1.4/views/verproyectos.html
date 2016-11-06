@@ -92,8 +92,8 @@
     <tr>
         <th> ID </th>
         <th> Nombre </th>
-        <!--<th> Rut </th>-->
-        <th>  </th>
+        <!--<th> Descripcion </th>-->
+        <!--<th>  </th>-->
         <th>  </th>
         <th>  </th>
         <th>  </th>
@@ -105,14 +105,13 @@
     <tr>
         <td><%= resultado[i].idproyecto%></td>
         <td><%= resultado[i].nombre%></td>
-        <!--<td><%= resultado[i].rut%></td>-->
-        <td> <a href="/modificarproyecto/<%= resultado[i].idproyecto%>">Modificar</a> </td>
+        <!--<td><%=resultado[i].descripcion%></td>-->
+        <!--<td> <a href="/modificarproyecto/<%= resultado[i].idproyecto%>">Modificar</a> </td>-->
         <td>
-
             <a href="/verproyecto/<%= resultado[i].idproyecto%>">Ver proyecto</a>
         </td>
         <td><a href="/cargarcontactos/<%= resultado[i].idproyecto%>">   Cargar contacto(s)     </a>     </td>
-        <td>    <a href="/vercontactosproyecto/<%= resultado[i].idproyecto%>">   Lista de contactos      </a>                 </td>
+        <td> <a href="/vercontactosproyecto/<%= resultado[i].idproyecto%>">   Lista de contactos      </a> </td>
         <td>
             <form class="form-horizontal" action="/api/eliminarproyecto/<%= resultado[i].idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
