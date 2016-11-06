@@ -13,9 +13,9 @@ module.exports = function(app, passport) {
         res.render('index.html', {title: 'CATI Beta '});
     });
 
-    app.get('/cargarcontactos', function(req, res) {
+    app.get('/cargarcontactos/:id',isLoggedInAdmin, function(req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('cargarcontactos.html', { message: req.flash('loginMessage') });
+        res.render('cargarcontactos.html', { message: req.flash('loginMessage'),idproyecto: req.params.id });
     });
 
     app.get('/encuestador', function(req, res) {
@@ -44,18 +44,12 @@ module.exports = function(app, passport) {
 
     app.post('/loginencuestador', passport.authenticate('local-login-encuestador', {
 
-        successRedirect : '/api/contactos', // redirect to the secure profile section
+        successRedirect : '/api/verproyectos', // redirect to the secure profile section
         failureRedirect : '/', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 
 
-    app.get('/vercontactos-encuestador', isLoggedInEncuestador  , function(req, res) {
-
-        res.render('vercontactos_encuestador.html', {
-            user : req.user // get the user out of session and pass to template
-        });
-    });
     app.get('/vercontactos', isLoggedInAdmin, function(req, res) {
         res.redirect('/api/contactos');
     });
@@ -71,7 +65,7 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
-    app.post('/cargarcontactos', function(req, res) {
+    app.post('/cargarcontactos/:id', function(req, res) {
         var archivoContactos;
         var fs;
         var localizacion;
@@ -86,21 +80,35 @@ module.exports = function(app, passport) {
         localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/');
         console.log(__dirname);
         console.log(localizacion);
-
         connection.connect();
-        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;", function(err) {
+        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE proyecto_contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS  (@col1,@col2,@col3,@col4)  set   `estado` = 'Disponible' , `rutcontacto` = @col1 , `idproyecto` = '"+req.params.id+"'", function(err) {
             if (!err) {
                 console.log('All good.');
-                res.send('Se ha subido el archivo');
             }
-            else
+            else{
                 console.log('Error while performing Query.');
-            res.send('Error al subir archivo.');
-        });
+                res.send('Error al subir archivo.');
+            }
+                 });
+            connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS ;", function(err) {if (!err) {
+                console.log('All good.');
+            }
+            else{
+                console.log('Error while performing Query.');
+                res.send('Error al subir archivo.');
+            }
+                });
+        res.redirect('/verproyectos');
+
     });
 
-    app.get('/vercontactos-encuestador',isLoggedInEncuestador, function (req, res) {
-        res.redirect('/api/contactos-encuestador');
+
+    app.get('/vercontactosproyectoencuestador/:id', isLoggedInEncuestador  , function(req, res) {
+        res.redirect('/api/contactosproyecto/'+req.params.id+'');
+    });
+
+    app.get('/vercontactosproyecto/:id',isLoggedInAdmin, function (req, res) {
+        res.redirect('/api/contactosproyecto/'+req.params.id+'');
     });
     app.get('/verproyecto/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/proyecto/'+req.params.id);

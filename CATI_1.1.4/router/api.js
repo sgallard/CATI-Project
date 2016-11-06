@@ -27,16 +27,29 @@ module.exports = router;
 			/*var query = url.parse(req.url,true).query;
 			 console.log(query);*/
 			models.contacto.findAll().then(function (user) {
-				//for(var x=0;x<user.length;x++){
-				//console.log(user[x].username);
-				res.render('vercontacto.html', {title: 'Listar contactos', resultado: user});
-				//}
+				console.log(user);
+				res.render('vercontacto.html', {title: 'Lista contactos', resultado: user});
 			});
 		} catch (ex) {
 			console.error("Internal error:" + ex);
 			return next(ex);
 		}
 	});
+router.get('/contactosproyecto/:id', function (req, res, next) {
+		/*var query = url.parse(req.url,true).query;
+		 console.log(query);*/
+		try {
+			models.proyecto_contacto.findAll({
+				where: {
+					idproyecto: req.params.id
+				}
+			}).then(function (user) {
+				res.render('vercontactosproyecto.html', {resultado:user});
+			});
+		} catch (ex) {
+			console.log("Id incorrecto.");
+		}
+});
 	router.get('/verencuestadores', function (req, res, next) {
 		try {
 			console.log(req);
@@ -56,14 +69,37 @@ module.exports = router;
 		}
 	});
 
+router.get('/verproyectos', function (req, res, next) {
+	try {
+		/*var query = url.parse(req.url,true).query;
+		 console.log(query);*/
+		models.proyecto.findAll().then(function (user) {
+			//for(var x=0;x<user.length;x++){
+			//console.log(user[x].username);
+			if (req.user.usuarioadmin!=undefined){
+				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});}
+			else if(req.user.usuarioencuestador!=undefined){
+				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user});
+
+			}
+
+			//res.json(user);
+			//}
+		});
+		//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
+	} catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+});
+
 	router.get('/encuestador/:id', function (req, res, next) {
-		console.log(req.params.id);
 		try {
-			models.encuestador.findAll(({
+			models.encuestador.findAll({
 				where: {
 					usuarioencuestador: req.params.id
 				}
-			})).then(function (user) {
+			}).then(function (user) {
 				res.render('encuestador.html', {id_usuario: req.params.id});
 			});
 		} catch (ex) {
@@ -227,23 +263,6 @@ router.post('/modificarproyecto/:id', function (req, res, next) {
 	}
 });
 
-	router.get('/verproyectos', function (req, res, next) {
-		try {
-			/*var query = url.parse(req.url,true).query;
-			 console.log(query);*/
-			models.proyecto.findAll().then(function (user) {
-				//for(var x=0;x<user.length;x++){
-				//console.log(user[x].username);
-				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});
-				//res.json(user);
-				//}
-			});
-			//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
-		} catch (ex) {
-			console.error("Internal error:" + ex);
-			return next(ex);
-		}
-	});
 
 
 	router.post('/eliminarencuestador/:id', function (req, res, next) {

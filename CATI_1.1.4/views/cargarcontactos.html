@@ -8,7 +8,7 @@
         <a>Inserte el archivo csv</a>
 
 
-        <form action="/cargarcontactos" method="post" encType="multipart/form-data">
+        <form action="/cargarcontactos/<%=idproyecto%>" method="post" encType="multipart/form-data">
             <input type="file" class="form-control" name="archivox" accept=".csv" />
             <button type="submit" class="btn btn-warning btn-lg">Cargar</button>
         </form>

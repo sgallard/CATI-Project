@@ -66,33 +66,32 @@
                         </li>
                     </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <!--<li><a href="#">Ver Perfil</a></li>-->
-                        <li><a href="/logout">Cerrar Sesión</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <!--<li><a href="#">Ver Perfil</a></li>-->
+                                <li><a href="/logout">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
+                </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
+            </div>
         </div>
-    </div>
 </nav>
 
 
 <div>
-    <h1>Lista encuestadores</h1>
+    <h1>  Contactos del proyecto <%=resultado[0].idproyecto%></h1>
 </div>
 
 
 <table class="table">
     <thead>
     <tr>
-        <th> usuario </th>
-        <th> nombre </th>
-        <th> contraseña </th>
+        <th> Rut </th>
+        <th> Estado </th>
         <!--<th> Rut </th>-->
         <th>  </th>
         <th> </th>
@@ -104,19 +103,18 @@
     <% for (var i= 0;i< resultado.length;i++){ %>
     <tbody>
     <tr>
-        <td><%= resultado[i].usuarioencuestador%></td>
-        <td><%= resultado[i].nombre%></td>
-        <td><%= resultado[i].contrasena %></td>
+        <td><%= resultado[i].rutcontacto%></td>
+        <td><%= resultado[i].estado%></td>
         <!--<td><%= resultado[i].rut%></td>-->
         <td> <a href="/modificarencuestador/<%= resultado[i].usuarioencuestador%>">Modificar</a> </td>
         <td> <a href="/encuestador?id=<%= resultado[i].usuarioencuestador%>" >Ver perfil</a> </td>
         <td>
-        <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[i].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
-            <div class="form-group">
-            <div class="col-lg-3">
-                <button type="submit" class="form-horizontal" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
-            </button>
-            </div>
+            <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[i].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <div class="col-lg-3">
+                        <button type="submit" class="form-horizontal" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
+                        </button>
+                    </div>
                 </div>
             </form>
         </td>
