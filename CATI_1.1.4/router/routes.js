@@ -38,14 +38,14 @@ module.exports = function(app, passport) {
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/api/verencuestadores', // redirect to the secure profile section
-        failureRedirect : '/', // redirect back to the signup page if there is an error
+        failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 
     app.post('/loginencuestador', passport.authenticate('local-login-encuestador', {
 
         successRedirect : '/api/verproyectos', // redirect to the secure profile section
-        failureRedirect : '/', // redirect back to the signup page if there is an error
+        failureRedirect : '/loginencuestador', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 

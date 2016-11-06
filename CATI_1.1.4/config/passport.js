@@ -32,13 +32,13 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        console.log("serialais");
+        //console.log("serialais");
         if(user.usuarioadmin){
-            console.log("serialadmin");
+            //console.log("serialadmin");
             tipo="admin";
             done(null, user.usuarioadmin);}
         else if(user.usuarioencuestador){
-            console.log("serialencjestador");
+            //console.log("serialencjestador");
             tipo="encuestador";
             done(null, user.usuarioencuestador);}
 
@@ -47,17 +47,17 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        console.log(tipo);
+        //console.log(tipo);
         connection.query("select * from `encuestador` WHERE `usuarioencuestador` = '"+id+"'",function(err,rows){
             if  ((rows[0]!=undefined && tipo=="admin")||rows[0]==undefined){
-                console.log("queryadmin");
+                //console.log("queryadmin");
                 connection.query("select * from `administrador` WHERE `usuarioadmin` = '"+id+"'",function(err,rows){
                     done(err, rows[0]);
 
                 });
             }
             else{
-                console.log("queryencuestador");
+                //console.log("queryencuestador");
                 done(err, rows[0]);}
         });
     });
@@ -136,12 +136,12 @@ module.exports = function(passport) {
                 if (err)
                     return done(err);
                 if (!rows.length) {
-                    return done(null, false, req.flash('loginMessage', 'admin no encontrado.')); // req.flash is the way to set flashdata using connect-flash
+                    return done(null, false, req.flash('loginMessage', 'Usuario o contraseña incorrecta.')); // req.flash is the way to set flashdata using connect-flash
                 }
 
                 // if the user is found but the password is wrong
                 if (!( rows[0].contrasena == password))
-                    return done(null, false, req.flash('loginMessage', 'Oops! contrasena erronea.')); // create the loginMessage and save it to session as flashdata
+                    return done(null, false, req.flash('loginMessage', 'Encuestador o contraseña incorrecta.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
                 return done(null, rows[0]);
@@ -164,12 +164,12 @@ module.exports = function(passport) {
                 if (err)
                     return done(err);
                 if (!rows.length) {
-                    return done(null, false, req.flash('loginMessage', 'encuestador no encontrado.')); // req.flash is the way to set flashdata using connect-flash
+                    return done(null, false, req.flash('loginMessage', 'Encuestador o contraseña incorrecta.')); // req.flash is the way to set flashdata using connect-flash
                 }
 
                 // if the user is found but the password is wrong
                 if (!( rows[0].contrasena == password))
-                    return done(null, false, req.flash('loginMessage', 'Oops! contraseña erronea.')); // create the loginMessage and save it to session as flashdata
+                    return done(null, false, req.flash('loginMessage', 'Encuestador o contraseña incorrecta.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
                 return done(null, rows[0]);
