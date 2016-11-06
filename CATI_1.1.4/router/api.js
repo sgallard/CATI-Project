@@ -22,7 +22,7 @@ module.exports = router;
 
 
 //GET contactos
-	router.get('/contactos', function (req, res, next) {
+router.get('/contactos', function (req, res, next) {
 		try {
 			/*var query = url.parse(req.url,true).query;
 			 console.log(query);*/
@@ -50,7 +50,7 @@ router.get('/contactosproyecto/:id', function (req, res, next) {
 			console.log("Id incorrecto.");
 		}
 });
-	router.get('/verencuestadores', function (req, res, next) {
+router.get('/verencuestadores', function (req, res, next) {
 		try {
 			models.encuestador.findAll().then(function (user) {
 				//for(var x=0;x<user.length;x++){
@@ -103,7 +103,7 @@ router.get('/encuestador/:id', function (req, res, next) {
 	});
 router.get('/proyecto/:id', function (req, res, next) {
 	try {
-		console.log(req);
+		//console.log(req);
 		models.proyecto.findAll(({
 			where: {
 				idproyecto: req.params.id
@@ -117,7 +117,7 @@ router.get('/proyecto/:id', function (req, res, next) {
 });
 
 //GET un usuario con id determinado
-	router.get('/usuarios/:id', function (req, res, next) {
+router.get('/usuarios/:id', function (req, res, next) {
 		try {
 			//var query = url.parse(req.url,true).query;
 			//console.log(query);
@@ -139,8 +139,22 @@ router.get('/proyecto/:id', function (req, res, next) {
 		}
 	});
 
+router.get('/modificarproy/:id', function (req, res, next){
+	try {
+		models.proyecto.findAll({
+			where:{
+				idproyecto: req.params.id
+			}
+		}).then(function (user) {
+			res.render("modificarproyecto.html",{resultado:user[0]});
+		});
+	} catch (ex) {
+		console.log("ID incorrecto.");
+	}
+});
+
 //POST crear usuario
-	router.post('/crearencuestador', function (req, res, next) {
+router.post('/crearencuestador', function (req, res, next) {
 		try {
 			models.encuestador.create({
 				usuarioencuestador: req.body.usuarioencuestador,
@@ -180,7 +194,7 @@ router.post('/crearproyecto', function (req, res, next) {
     }
 });
 
-	router.put('/usuarios/:id', function (req, res, next) {
+router.put('/usuarios/:id', function (req, res, next) {
 		try {
 
 
@@ -243,7 +257,7 @@ router.post('/modificarproyecto/:id', function (req, res, next) {
 					nombre: req.body.nombre,
 					descripcion: req.body.descripcion
 				}).then(function (result) {
-					res.send(result);
+					res.redirect('/api/proyecto/'+req.params.id);
 				})
 
 
@@ -276,7 +290,7 @@ router.post('/eliminarproyecto/:id', function (req, res, next) {
     try {console.log(req.params.id);
         models.proyecto.destroy({where: {idproyecto: req.params.id}}).then(function () {
             return models.proyecto.findAll().then(function (user) {
-                res.json(user);
+				res.redirect('/api/verproyectos');
             })
         })
     }

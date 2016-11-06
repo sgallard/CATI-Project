@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21096e9a-8a5c-40c3-ae55-caf4d1d7836a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/node_modules/nodeadmin/middleware/secret.js" afterPath="$PROJECT_DIR$/CATI_1.1.4/node_modules/nodeadmin/middleware/secret.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/node_modules/nodeadmin/middleware/serverlogs/access.log" afterPath="$PROJECT_DIR$/CATI_1.1.4/node_modules/nodeadmin/middleware/serverlogs/access.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/router/api.js" afterPath="$PROJECT_DIR$/CATI_1.1.4/router/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/cargarcontactos.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/cargarcontactos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/crearproyecto.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/crearproyecto.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/encuestador.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/encuestador.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/modificarencuestador.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/modificarencuestador.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/router/routes.js" afterPath="$PROJECT_DIR$/CATI_1.1.4/router/routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html" afterPath="$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html" />
     </list>
     <ignored path="CATI-Project.iws" />
@@ -35,32 +30,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/api.js">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+            <state relative-caret-position="124">
+              <caret line="113" column="53" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="53" />
               <folding>
-                <element signature="e#1849#2510#0" expanded="false" />
-                <element signature="e#2571#2819#0" expanded="false" />
-                <element signature="e#3218#3728#0" expanded="false" />
-                <element signature="e#3813#4231#0" expanded="false" />
-                <element signature="e#4290#4723#0" expanded="false" />
-                <element signature="e#4782#5424#0" expanded="false" />
-                <element signature="e#5494#6049#0" expanded="false" />
-                <element signature="e#6116#6635#0" expanded="false" />
-                <element signature="e#6707#7047#0" expanded="false" />
-                <element signature="e#7113#7469#0" expanded="false" />
+                <element signature="e#2392#2448#0" expanded="false" />
+                <element signature="e#2508#4079#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="verencuestadores.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/verencuestadores.html">
+      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
+            <state relative-caret-position="844">
+              <caret line="292" column="47" selection-start-line="292" selection-start-column="47" selection-end-line="292" selection-end-column="47" />
+              <folding>
+                <element signature="e#618#950#0" expanded="false" />
+                <element signature="e#1016#1341#0" expanded="false" />
+                <element signature="e#1402#1789#0" expanded="false" />
+                <element signature="e#1847#2508#0" expanded="false" />
+                <element signature="e#2569#2817#0" expanded="false" />
+                <element signature="e#2932#2984#0" expanded="false" />
+                <element signature="e#3217#3727#0" expanded="false" />
+                <element signature="e#3789#4020#0" expanded="false" />
+                <element signature="e#3824#3875#0" expanded="false" />
+                <element signature="e#4104#4522#0" expanded="false" />
+                <element signature="e#4581#5014#0" expanded="false" />
+                <element signature="e#5072#5714#0" expanded="false" />
+                <element signature="e#5784#6339#0" expanded="false" />
+                <element signature="e#6406#6953#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proyecto.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#1;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#br#1;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modificarproyecto.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="104" column="70" selection-start-line="104" selection-start-column="70" selection-end-line="104" selection-end-column="70" />
               <folding>
                 <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -106,8 +134,8 @@
       <file leaf-file-name="verproyectos.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+            <state relative-caret-position="375">
+              <caret line="123" column="16" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="16" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -119,39 +147,11 @@
       <file leaf-file-name="modificarencuestador.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarencuestador.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="28" column="12" selection-start-line="28" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+            <state relative-caret-position="-53">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding>
                 <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modificarproyecto.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="103" column="37" selection-start-line="103" selection-start-column="37" selection-end-line="103" selection-end-column="37" />
-              <folding>
-                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proyecto.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="92" column="4" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
-              <folding>
-                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#h1#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#br#1;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -190,7 +190,6 @@
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/CrearUsuario.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/VerUsuario.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/vercontacto.html" />
-        <option value="$PROJECT_DIR$/CATI_1.1.4/router/routes.js" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/index.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/login.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/config/passport.js" />
@@ -198,13 +197,14 @@
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/verencuestadores.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/crearencuestador.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/crearproyecto.html" />
-        <option value="$PROJECT_DIR$/CATI_1.1.4/router/api.js" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/modificarencuestador.html" />
-        <option value="$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/cargarcontactos.html" />
-        <option value="$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/encuestador.html" />
         <option value="$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html" />
+        <option value="$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html" />
+        <option value="$PROJECT_DIR$/CATI_1.1.4/router/routes.js" />
+        <option value="$PROJECT_DIR$/CATI_1.1.4/router/api.js" />
+        <option value="$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html" />
       </list>
     </option>
   </component>
@@ -434,12 +434,12 @@
       <workItem from="1473560017497" duration="726000" />
       <workItem from="1474240509445" duration="29000" />
       <workItem from="1477868938914" duration="7948000" />
-      <workItem from="1478462413287" duration="9938000" />
+      <workItem from="1478462413287" duration="11819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24032000" />
+    <option name="totallyTimeSpent" value="25913000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -527,16 +527,20 @@
         <state relative-caret-position="870">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
-            <element signature="e#1849#2510#0" expanded="false" />
-            <element signature="e#2571#2819#0" expanded="false" />
-            <element signature="e#3218#3728#0" expanded="false" />
-            <element signature="e#3813#4231#0" expanded="false" />
-            <element signature="e#4290#4723#0" expanded="false" />
-            <element signature="e#4782#5424#0" expanded="false" />
-            <element signature="e#5494#6049#0" expanded="false" />
-            <element signature="e#6116#6635#0" expanded="false" />
-            <element signature="e#6707#7047#0" expanded="false" />
-            <element signature="e#7113#7469#0" expanded="false" />
+            <element signature="e#618#950#0" expanded="false" />
+            <element signature="e#1016#1341#0" expanded="false" />
+            <element signature="e#1402#1789#0" expanded="false" />
+            <element signature="e#1847#2508#0" expanded="false" />
+            <element signature="e#2569#2817#0" expanded="false" />
+            <element signature="e#2932#2984#0" expanded="false" />
+            <element signature="e#3217#3727#0" expanded="false" />
+            <element signature="e#3789#4020#0" expanded="false" />
+            <element signature="e#3824#3875#0" expanded="false" />
+            <element signature="e#4104#4522#0" expanded="false" />
+            <element signature="e#4581#5014#0" expanded="false" />
+            <element signature="e#5072#5714#0" expanded="false" />
+            <element signature="e#5784#6339#0" expanded="false" />
+            <element signature="e#6406#6953#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -609,16 +613,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1849#2510#0" expanded="false" />
-            <element signature="e#2571#2819#0" expanded="false" />
-            <element signature="e#3218#3728#0" expanded="false" />
-            <element signature="e#3813#4231#0" expanded="false" />
-            <element signature="e#4290#4723#0" expanded="false" />
-            <element signature="e#4782#5424#0" expanded="false" />
-            <element signature="e#5494#6049#0" expanded="false" />
-            <element signature="e#6116#6635#0" expanded="false" />
-            <element signature="e#6707#7047#0" expanded="false" />
-            <element signature="e#7113#7469#0" expanded="false" />
+            <element signature="e#618#950#0" expanded="false" />
+            <element signature="e#1016#1341#0" expanded="false" />
+            <element signature="e#1402#1789#0" expanded="false" />
+            <element signature="e#1847#2508#0" expanded="false" />
+            <element signature="e#2569#2817#0" expanded="false" />
+            <element signature="e#2932#2984#0" expanded="false" />
+            <element signature="e#3217#3727#0" expanded="false" />
+            <element signature="e#3789#4020#0" expanded="false" />
+            <element signature="e#3824#3875#0" expanded="false" />
+            <element signature="e#4104#4522#0" expanded="false" />
+            <element signature="e#4581#5014#0" expanded="false" />
+            <element signature="e#5072#5714#0" expanded="false" />
+            <element signature="e#5784#6339#0" expanded="false" />
+            <element signature="e#6406#6953#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -654,16 +662,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1849#2510#0" expanded="false" />
-            <element signature="e#2571#2819#0" expanded="false" />
-            <element signature="e#3218#3728#0" expanded="false" />
-            <element signature="e#3813#4231#0" expanded="false" />
-            <element signature="e#4290#4723#0" expanded="false" />
-            <element signature="e#4782#5424#0" expanded="false" />
-            <element signature="e#5494#6049#0" expanded="false" />
-            <element signature="e#6116#6635#0" expanded="false" />
-            <element signature="e#6707#7047#0" expanded="false" />
-            <element signature="e#7113#7469#0" expanded="false" />
+            <element signature="e#618#950#0" expanded="false" />
+            <element signature="e#1016#1341#0" expanded="false" />
+            <element signature="e#1402#1789#0" expanded="false" />
+            <element signature="e#1847#2508#0" expanded="false" />
+            <element signature="e#2569#2817#0" expanded="false" />
+            <element signature="e#2932#2984#0" expanded="false" />
+            <element signature="e#3217#3727#0" expanded="false" />
+            <element signature="e#3789#4020#0" expanded="false" />
+            <element signature="e#3824#3875#0" expanded="false" />
+            <element signature="e#4104#4522#0" expanded="false" />
+            <element signature="e#4581#5014#0" expanded="false" />
+            <element signature="e#5072#5714#0" expanded="false" />
+            <element signature="e#5784#6339#0" expanded="false" />
+            <element signature="e#6406#6953#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -700,16 +712,20 @@
         <state relative-caret-position="1035">
           <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
           <folding>
-            <element signature="e#1849#2510#0" expanded="false" />
-            <element signature="e#2571#2819#0" expanded="false" />
-            <element signature="e#3218#3728#0" expanded="false" />
-            <element signature="e#3813#4231#0" expanded="false" />
-            <element signature="e#4290#4723#0" expanded="false" />
-            <element signature="e#4782#5424#0" expanded="false" />
-            <element signature="e#5494#6049#0" expanded="false" />
-            <element signature="e#6116#6635#0" expanded="false" />
-            <element signature="e#6707#7047#0" expanded="false" />
-            <element signature="e#7113#7469#0" expanded="false" />
+            <element signature="e#618#950#0" expanded="false" />
+            <element signature="e#1016#1341#0" expanded="false" />
+            <element signature="e#1402#1789#0" expanded="false" />
+            <element signature="e#1847#2508#0" expanded="false" />
+            <element signature="e#2569#2817#0" expanded="false" />
+            <element signature="e#2932#2984#0" expanded="false" />
+            <element signature="e#3217#3727#0" expanded="false" />
+            <element signature="e#3789#4020#0" expanded="false" />
+            <element signature="e#3824#3875#0" expanded="false" />
+            <element signature="e#4104#4522#0" expanded="false" />
+            <element signature="e#4581#5014#0" expanded="false" />
+            <element signature="e#5072#5714#0" expanded="false" />
+            <element signature="e#5784#6339#0" expanded="false" />
+            <element signature="e#6406#6953#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -826,17 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-          <folding>
-            <element signature="e#2392#2448#0" expanded="false" />
-            <element signature="e#2508#4079#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/crearencuestador.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -853,36 +858,6 @@
           <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
           <folding>
             <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
-          <folding>
-            <element signature="e#1849#2510#0" expanded="false" />
-            <element signature="e#2571#2819#0" expanded="false" />
-            <element signature="e#3218#3728#0" expanded="false" />
-            <element signature="e#3813#4231#0" expanded="false" />
-            <element signature="e#4290#4723#0" expanded="false" />
-            <element signature="e#4782#5424#0" expanded="false" />
-            <element signature="e#5494#6049#0" expanded="false" />
-            <element signature="e#6116#6635#0" expanded="false" />
-            <element signature="e#6707#7047#0" expanded="false" />
-            <element signature="e#7113#7469#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarencuestador.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="28" column="12" selection-start-line="28" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -906,37 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/crearproyecto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="103" column="37" selection-start-line="103" selection-start-column="37" selection-end-line="103" selection-end-column="37" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/encuestador.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -949,16 +893,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html">
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/crearproyecto.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="92" column="4" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
+        <state relative-caret-position="345">
+          <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
           <folding>
             <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h1#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/verproyectos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="123" column="16" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="16" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarencuestador.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-53">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/proyecto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#1;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#br#1;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="113" column="53" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="53" />
+          <folding>
+            <element signature="e#2392#2448#0" expanded="false" />
+            <element signature="e#2508#4079#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/router/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="844">
+          <caret line="292" column="47" selection-start-line="292" selection-start-column="47" selection-end-line="292" selection-end-column="47" />
+          <folding>
+            <element signature="e#618#950#0" expanded="false" />
+            <element signature="e#1016#1341#0" expanded="false" />
+            <element signature="e#1402#1789#0" expanded="false" />
+            <element signature="e#1847#2508#0" expanded="false" />
+            <element signature="e#2569#2817#0" expanded="false" />
+            <element signature="e#2932#2984#0" expanded="false" />
+            <element signature="e#3217#3727#0" expanded="false" />
+            <element signature="e#3789#4020#0" expanded="false" />
+            <element signature="e#3824#3875#0" expanded="false" />
+            <element signature="e#4104#4522#0" expanded="false" />
+            <element signature="e#4581#5014#0" expanded="false" />
+            <element signature="e#5072#5714#0" expanded="false" />
+            <element signature="e#5784#6339#0" expanded="false" />
+            <element signature="e#6406#6953#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CATI_1.1.4/views/modificarproyecto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="104" column="70" selection-start-line="104" selection-start-column="70" selection-end-line="104" selection-end-column="70" />
+          <folding>
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

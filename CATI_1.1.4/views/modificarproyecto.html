@@ -81,27 +81,28 @@
     </div>
 </nav>
 
-<h3>Modificar a proyecto <%= idproyecto%> </h3>
+<h1>Modificar proyecto <%= resultado.idproyecto%>: <%= resultado.nombre%>  </h1>
+<hr>
 
-<form class="form-horizontal" action="/api/modificarproyecto/<%= idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
+<form class="form-horizontal" action="/api/modificarproyecto/<%= resultado.idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
     <fieldset>
         <div class="form-group">
             <label class="col-lg-2 control-label">Nombre: </label>
             <div class="col-lg-3">
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+                <input value="<%= resultado.nombre%>"type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">Descripción: </label>
             <div class="col-lg-3">
-                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
+                <input value="<%= resultado.descripcion%>" type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
             </div>
         </div>
 
 
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default">Cancelar</button>
+                <button type="reset" class="btn btn-default">Reiniciar</button>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </div>

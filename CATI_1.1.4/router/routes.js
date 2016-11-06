@@ -123,7 +123,7 @@ module.exports = function(app, passport) {
         res.render('modificarencuestador.html',{usuarioencuestador: req.params.id});
     });
     app.get('/modificarproyecto/:id',isLoggedInAdmin, function (req, res) {
-        res.render('modificarproyecto.html',{idproyecto: req.params.id});
+        res.redirect('/api/modificarproy/'+req.params.id);
     });
     app.post('/modificarencuestador/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/modificarencuestador/'+req.params.id);
