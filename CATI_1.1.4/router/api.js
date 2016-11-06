@@ -70,6 +70,20 @@ module.exports = router;
 			console.log("Id incorrecto.");
 		}
 	});
+router.get('/proyecto/:id', function (req, res, next) {
+	try {
+		console.log(req);
+		models.proyecto.findAll(({
+			where: {
+				idproyecto: req.params.id
+			}
+		})).then(function (user) {
+			res.render('proyecto.html', {idproyecto: req.params.id ,descripcion: user[0].dataValues.descripcion });
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
 
 //GET un usuario con id determinado
 	router.get('/usuarios/:id', function (req, res, next) {
@@ -134,6 +148,7 @@ router.post('/crearproyecto', function (req, res, next) {
         return next(ex);
     }
 });
+
 	router.put('/usuarios/:id', function (req, res, next) {
 		try {
 
@@ -188,6 +203,29 @@ router.post('/crearproyecto', function (req, res, next) {
 			return next(ex);
 		}
 	});
+router.post('/modificarproyecto/:id', function (req, res, next) {
+	try {
+		models.proyecto.findOne({where: {idproyecto: req.params.id}}).then(function (user) {
+			console.log('enter');
+			if (req.params.id	 && req.body.nombre && req.body.descripcion) {
+				console.log(req.body.descripcion);
+				user.updateAttributes({
+					idproyecto: req.body.idproyecto,
+					nombre: req.body.nombre,
+					descripcion: req.body.descripcion
+				}).then(function (result) {
+					res.send(result);
+				})
+
+
+			}
+		});
+	}
+	catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+});
 
 	router.get('/verproyectos', function (req, res, next) {
 		try {

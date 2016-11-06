@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Sistema CATI 1.1.4</title>
@@ -68,7 +68,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Admin! <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <!--<li><a href="#">Ver Perfil</a></li>-->
                                 <li><a href="/logout">Cerrar Sesión</a></li>
@@ -77,31 +77,42 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
+           </div>
         </div>
-    </div>
 </nav>
-<body>
-<%= idproyecto%>
-
-<%= descripcion%>
 
 
 
-<form class="form-horizontal" action="/api/eliminarproyecto/<%= idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
-    <div class="form-group">
-        <div class="col-lg-3">
-            <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="IDdproyecto">Eliminar
-            </button>
-        </div>
-    </div>
-</form>
+
+<h3>Modificar a proyecto <%= idproyecto%> </h3>
+
 <form class="form-horizontal" action="/api/modificarproyecto/<%= idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
-    <div class="form-group">
-        <div class="col-lg-3">
-            <button type="submit" class="form-horizontal" id="idproyecto" name="idproyecto" placeholder="idproyecto">Modificar
-            </button>
+    <fieldset>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Nombre del proyecto: </label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Descripción del proyecto: </label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
 </form>
+
+
+
+
 </body>
 </html>

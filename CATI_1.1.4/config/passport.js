@@ -34,9 +34,11 @@ module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
         console.log("serialais");
         if(user.usuarioadmin){
+            console.log("serialadmin");
             tipo="admin";
             done(null, user.usuarioadmin);}
         else if(user.usuarioencuestador){
+            console.log("serialencjestador");
             tipo="encuestador";
             done(null, user.usuarioencuestador);}
 
@@ -45,16 +47,17 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
+        console.log(tipo);
         connection.query("select * from `encuestador` WHERE `usuarioencuestador` = '"+id+"'",function(err,rows){
-            if  (rows[0]==undefined && tipo=="admin"){
-                console.log("admin");
+            if  ((rows[0]!=undefined && tipo=="admin")||rows[0]==undefined){
+                console.log("queryadmin");
                 connection.query("select * from `administrador` WHERE `usuarioadmin` = '"+id+"'",function(err,rows){
                     done(err, rows[0]);
 
                 });
             }
             else{
-                console.log("encuestador");
+                console.log("queryencuestador");
                 done(err, rows[0]);}
         });
     });
