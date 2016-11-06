@@ -52,15 +52,10 @@ router.get('/contactosproyecto/:id', function (req, res, next) {
 });
 	router.get('/verencuestadores', function (req, res, next) {
 		try {
-			console.log(req);
-			/*var query = url.parse(req.url,true).query;
-			 console.log(query);*/
 			models.encuestador.findAll().then(function (user) {
 				//for(var x=0;x<user.length;x++){
 				//console.log(user[x].username);
 				res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user});
-				//res.json(user);
-				//}
 			});
 			//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
 		} catch (ex) {
@@ -93,14 +88,14 @@ router.get('/verproyectos', function (req, res, next) {
 	}
 });
 
-	router.get('/encuestador/:id', function (req, res, next) {
+router.get('/encuestador/:id', function (req, res, next) {
 		try {
 			models.encuestador.findAll({
 				where: {
 					usuarioencuestador: req.params.id
 				}
 			}).then(function (user) {
-				res.render('encuestador.html', {id_usuario: req.params.id});
+				res.render('encuestador.html', {title: "encuestadors", resultado: user});
 			});
 		} catch (ex) {
 			console.log("Id incorrecto.");
@@ -217,7 +212,7 @@ router.post('/crearproyecto', function (req, res, next) {
 			return next(ex);
 		}
 	});
-	router.post('/modificarencuestador/:id', function (req, res, next) {
+router.post('/modificarencuestador/:id', function (req, res, next) {
 		try {
 			models.encuestador.findOne({where: {usuarioencuestador: req.params.id}}).then(function (user) {
 
@@ -227,10 +222,8 @@ router.post('/crearproyecto', function (req, res, next) {
 						nombre: req.body.nombre,
 						contrasena: req.body.contrasena
 					}).then(function (result) {
-						res.send(result);
+						res.redirect('/api/encuestador/'+req.body.usuarioencuestador);
 					})
-
-
 				}
 			});
 		}
