@@ -95,7 +95,7 @@ router.get('/encuestador/:id', function (req, res, next) {
 					usuarioencuestador: req.params.id
 				}
 			}).then(function (user) {
-				res.render('encuestador.html', {title: "encuestadors", resultado: user});
+				res.render('encuestador.html', {resultado: user});
 			});
 		} catch (ex) {
 			console.log("Id incorrecto.");
@@ -258,12 +258,12 @@ router.post('/modificarproyecto/:id', function (req, res, next) {
 
 
 
-	router.post('/eliminarencuestador/:id', function (req, res, next) {
+router.post('/eliminarencuestador/:id', function (req, res, next) {
 		try {
 			console.log(req.params);
 			models.encuestador.destroy({where: {usuarioencuestador: req.params.id}}).then(function () {
 				return models.encuestador.findAll().then(function (user) {
-					res.json(user);
+					res.redirect('/api/verencuestadores');
 				})
 			})
 		}
