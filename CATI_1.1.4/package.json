@@ -16,6 +16,7 @@
     "express-session": "~1.14.0",
     "method-override": "~2.3.6",
     "morgan": "~1.7.0",
+    "multer": "^1.2.0",
     "mysql": "^2.5.4",
     "mysql2": "^1.0.0-rc.12",
     "passport": "~0.3.2",
@@ -25,7 +26,6 @@
     "passport-twitter": "~1.0.4",
     "sequelize": "^3.24.2"
   },
-
   "author": "Ayudantes ASDW/FISW 2016-2",
   "license": "ISC"
 }
