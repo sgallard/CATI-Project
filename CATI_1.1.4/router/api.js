@@ -50,6 +50,37 @@ router.get('/contactosproyecto/:id', function (req, res, next) {
 			console.log("Id incorrecto.");
 		}
 });
+
+router.get('/contactosproyectoencuestador/:id', function (req, res, next) {
+	/*var query = url.parse(req.url,true).query;
+	 console.log(query);*/
+	try {
+		models.proyecto_contacto.findAll({
+			where: {
+				idproyecto: req.params.id
+			}
+		}).then(function (user) {
+			res.render('vercontactos_encuestador.html', {resultado:user});
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
+
+router.get('/vercontacto_encuestador/:idp/:id', function(req,res,next){
+	try {
+		models.contacto.findAll({
+			where: {
+				rutcontacto: req.params.id
+			}
+		}).then(function (user) {
+			res.render('vercontacto_encuestador.html', {resultado: user[0], id_proyecto: req.params.idp});
+		});
+	} catch (ex) {
+		console.log("id incorrecto.");
+	}
+});
+
 router.get('/verencuestadores', function (req, res, next) {
 		try {
 			models.encuestador.findAll().then(function (user) {
@@ -246,6 +277,27 @@ router.post('/modificarencuestador/:id', function (req, res, next) {
 			return next(ex);
 		}
 	});
+router.post('/modificarestado/', function (req, res, next){
+	try{
+		models.proyecto_contacto.findOne({
+			where:{
+				rutcontacto: req.body.rut_contacto,
+				idproyecto: req.body.id_proyecto
+			}
+		}).then(function (user){
+			user.updateAttributes({
+				estado: req.body.nuevo_estado
+			}).then(function (result){
+				res.redirect('/api/contactosproyectoencuestador/'+req.body.id_proyecto);
+			})
+		});
+	}
+	catch (ex){
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+});
+
 router.post('/modificarproyecto/:id', function (req, res, next) {
 	try {
 		models.proyecto.findOne({where: {idproyecto: req.params.id}}).then(function (user) {

@@ -98,13 +98,12 @@ module.exports = function(app, passport) {
                 res.send('Error al subir archivo.');
             }
                 });
-        res.redirect('/verproyectos');
-
+        res.redirect('/api/proyecto/'+req.params.id+'');
     });
 
 
     app.get('/vercontactosproyectoencuestador/:id', isLoggedInEncuestador  , function(req, res) {
-        res.redirect('/api/contactosproyecto/'+req.params.id+'');
+        res.redirect('/api/contactosproyectoencuestador/'+req.params.id+'');
     });
 
     app.get('/vercontactosproyecto/:id',isLoggedInAdmin, function (req, res) {
@@ -139,6 +138,12 @@ module.exports = function(app, passport) {
     app.get('/verproyectos',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/verproyectos');
 
+    });
+    app.get('/vercontacto_encuestador/:idp/:id', function(req, res){
+        res.redirect('/api/vercontacto_encuestador/'+req.params.idp+'/'+req.params.id);
+    });
+    app.get('/modificarestado/:idp/:id', function (req, res) {
+        res.render('modificarestado.html', {id_proyecto:req.params.idp, rut_contacto: req.params.id});
     });
 };
 
