@@ -81,6 +81,14 @@ module.exports = function(app, passport) {
         console.log(__dirname);
         console.log(localizacion);
         connection.connect();
+        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS ;", function(err) {if (!err) {
+            console.log('All good.');
+        }
+        else{
+            console.log('Error while performing Query.');
+            res.send('Error al subir archivo.');
+        }
+        });
         connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE proyecto_contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS  (@col1,@col2,@col3,@col4)  set   `estado` = 'Disponible' , `rutcontacto` = @col1 , `idproyecto` = '"+req.params.id+"'", function(err) {
             if (!err) {
                 console.log('All good.');
@@ -90,14 +98,7 @@ module.exports = function(app, passport) {
                 res.send('Error al subir archivo.');
             }
                  });
-            connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS ;", function(err) {if (!err) {
-                console.log('All good.');
-            }
-            else{
-                console.log('Error while performing Query.');
-                res.send('Error al subir archivo.');
-            }
-                });
+        connection.end();
         res.redirect('/api/proyecto/'+req.params.id+'');
     });
 

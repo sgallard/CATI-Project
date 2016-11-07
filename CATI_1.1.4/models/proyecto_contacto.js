@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                     onDelete: "CASCADE",
                     foreignKey: {
                         name: "idproyecto",
+                        primaryKey: true,
                         allowNull: false
                     }
                 });
@@ -24,6 +25,7 @@ module.exports = function(sequelize, DataTypes) {
                     onDelete: "CASCADE",
                     foreignKey: {
                         name: 'rutcontacto',
+                        primaryKey: true,
                         allowNull: false
                     }
                 });
