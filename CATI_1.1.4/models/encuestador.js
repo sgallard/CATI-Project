@@ -21,10 +21,7 @@ module.exports = function(sequelize, DataTypes) {
                     name: 'usuarioencuestador',
                     allowNull: false
                 } });
-                encuestador.hasMany(models.calificacion, { foreignKey: {
-                    name: 'usuarioencuestador',
-                    allowNull: false
-                } })
+
             }
         }
     });

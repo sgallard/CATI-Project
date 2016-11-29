@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     var calificacion;
     calificacion = sequelize.define("calificacion", {
 
-        nota: DataTypes.STRING
+        nota: DataTypes.INTEGER
     }, {        timestamps:false,
 
         classMethods: {

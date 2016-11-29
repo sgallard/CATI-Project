@@ -126,7 +126,6 @@ router.get('/verencuestadores', function (req, res, next) {
 	});
 router.get('/verllamadas/:id', function (req, res, next) {
 	try {
-		//console.log(req);
 		models.llamada.findAll(({
 			where: {
 				usuarioencuestador: req.params.id
@@ -245,6 +244,42 @@ router.post('/crearencuestador', function (req, res, next) {
 		}
 	});
 
+
+
+router.post('/calificacion/:id',function(req,res,next){
+	try {
+		models.calificacion.findOne({
+			where: {
+				id: req.params.id,
+				usuarioadmin: req.user.usuarioadmin
+			}
+		}).then(function (user) {
+			if (user==undefined){
+				models.calificacion.create({
+
+					id: req.params.id,
+					usuarioadmin: req.user.usuarioadmin,
+					nota: req.body.calificacion
+				});
+
+			}
+			else{
+				user.updateAttributes({
+					nota: req.body.calificacion
+				});
+
+
+			}
+			res.redirect("/verllamadas/" + req.params.id);
+		});
+	}
+	catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+
+
+});
 router.post('/crearllamada/:id/:idp',function(req,res,next){
 	try {
 		models.llamada.create({
