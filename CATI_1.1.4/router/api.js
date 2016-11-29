@@ -44,11 +44,42 @@ router.get('/contactosproyecto/:id', function (req, res, next) {
 					idproyecto: req.params.id
 				}
 			}).then(function (user) {
-				res.render('vercontactosproyecto.html', {resultado:user});
+				res.render('vercontactosproyecto.html', {resultado:user,id:req.params.id});
 			});
 		} catch (ex) {
 			console.log("Id incorrecto.");
 		}
+});
+
+router.get('/cargarencuestaproyecto/:id', function (req, res, next) {
+	try {
+		//console.log(req);
+		models.proyecto.findOne(({
+			where: {
+				idproyecto: req.params.id
+			}
+		})).then(function (user) {
+			res.render('cargarencuesta.html', {resultado: user});
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
+
+router.post('/cargarencuestaproyecto/:id', function (req, res, next) {
+	try {
+		console.log("Ayyyylmao")
+		models.encuesta.create({
+			url: req.body.URL,
+			idproyecto: req.body.id_p
+		});
+		res.redirect('/api/proyecto/'+req.params.id);
+
+	}
+	catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
 });
 
 router.get('/contactosproyectoencuestador/:id', function (req, res, next) {
@@ -134,42 +165,38 @@ router.get('/encuestador/:id', function (req, res, next) {
 	});
 router.get('/proyecto/:id', function (req, res, next) {
 	try {
-		//console.log(req);
-		models.proyecto.findAll(({
+		models.proyecto.findOne({
 			where: {
 				idproyecto: req.params.id
 			}
-		})).then(function (user) {
-			res.render('proyecto.html', {resultado: user[0]});
+		}).then(function (user){
+			models.encuesta.findOne({
+				where: {
+					idproyecto: req.params.id
+				}
+			}).then(function (ENC){
+				res.render('proyecto.html', {resultado: user, r_encuesta: ENC});
+			})
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
 	}
 });
-
 //GET un usuario con id determinado
 router.get('/usuarios/:id', function (req, res, next) {
 		try {
-			//var query = url.parse(req.url,true).query;
-			//console.log(query);
-			console.log(req.params.id);
 			models.Usuario.findAll({
 				where: {
 					id: req.params.id
 				}
 			}).then(function (user) {
-				//for(var x=0;x<user.length;x++){
-				//console.log(user[x].username);
-				//console.log(user.get('username'));
 				res.render('vercontacto.html', {title: 'Listar Usuarios', resultado: user});
-				//}
 			});
 		} catch (ex) {
 			console.error("Internal error:" + ex);
 			return next(ex);
 		}
 	});
-
 router.get('/modificarproy/:id', function (req, res, next){
 	try {
 		models.proyecto.findAll({
@@ -207,6 +234,7 @@ router.post('/crearencuestador', function (req, res, next) {
 	});
 router.post('/crearproyecto', function (req, res, next) {
     try {
+    	console.log("Ayyy lemeo")
         models.proyecto.create({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion
@@ -224,7 +252,6 @@ router.post('/crearproyecto', function (req, res, next) {
         return next(ex);
     }
 });
-
 router.put('/usuarios/:id', function (req, res, next) {
 		try {
 

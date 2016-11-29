@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement:true
         },
-        titulo: DataTypes.STRING
+        url: DataTypes.STRING
     }, {
         timestamps:false,
         classMethods: {

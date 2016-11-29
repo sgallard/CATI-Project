@@ -110,6 +110,9 @@ module.exports = function(app, passport) {
     app.get('/vercontactosproyecto/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/contactosproyecto/'+req.params.id+'');
     });
+    app.get('/cargarencuestaproyecto/:id',isLoggedInAdmin, function (req, res) {
+        res.redirect('/api/cargarencuestaproyecto/'+req.params.id+'');
+    });
     app.get('/verproyecto/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/proyecto/'+req.params.id);
     });

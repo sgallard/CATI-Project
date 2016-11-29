@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 <head>
+    <link rel="import" href="component.html">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sistema CATI 1.1.4</title>
+    <title>Mi Primera App Web</title>
 
     <!-- Bootstrap -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
-    <script  src="/node_modules/angular/angular.js"></script>
-    <script  src="/node_modules/angular/angular.min.js"></script>
-    <script src="/controllers/encuestadores.js"></script>
 
+    <!--<link href="stylesheet/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body ng-app="Cati"  ng-controller="encuestadores">
+<body>
+<link rel="import" href="layout.html">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -81,50 +86,34 @@
     </div>
 </nav>
 
-
-<div>
-    <h1>  Contactos del proyecto <%=id%></h1>
-</div>
+<h1>Agregar encuesta para proyecto: <%=resultado.nombre%></h1>
 
 <hr>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th> Rut </th>
-        <th> Estado </th>
-        <!--<th> Rut </th>-->
-        <!--<th>  </th>
-        <th> </th>-->
+<form class="form-horizontal" action="/api/cargarencuestaproyecto/<%=resultado.idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
+    <fieldset>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Id Proyecto</label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" id="id_p" name="id_p" readonly value="<%= resultado.idproyecto%>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">URL Encuesta</label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" id="URL" name="URL" placeholder="eg: https://goo.gl/forms/AABBCCDDEE00FFGG1">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Reiniciar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
 
 
-
-    </tr>
-    </thead>
-    <% for (var i= 0;i< resultado.length;i++){ %>
-    <tbody>
-    <tr>
-        <td><%= resultado[i].rutcontacto%></td>
-        <td><%= resultado[i].estado%></td>
-        <!--<td><%= resultado[i].rut%></td>-->
-        <!--<td> <a href="/modificarencuestador/<%= resultado[i].usuarioencuestador%>">Modificar</a> </td>
-        <td> <a href="/encuestador?id=<%= resultado[i].usuarioencuestador%>" >Ver perfil</a> </td>
-        <td>
-            <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[i].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
-                <div class="form-group">
-                    <div class="col-lg-3">
-                        <button type="submit" class="form-horizontal" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </td>-->
-
-
-    </tr>
-    <% }%>
-    </tbody>
-</table>
 
 
 </body>

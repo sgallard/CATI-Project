@@ -90,14 +90,22 @@
     <h3>Descripción: <%= resultado.descripcion%>%></h3>
 </div>
 <br>
-<div id="modificar">
+<div id="modificar" class="col-lg-2">
 <a class="btn btn-primary" style="clear:both" href="/cargarcontactos/<%= resultado.idproyecto%>">   Cargar contactos     </a>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
     <a class="btn btn-primary" href="/vercontactosproyecto/<%= resultado.idproyecto%>">   Lista de contactos      </a>
+</div>
+<div class="col-lg-1">
+    <a class="btn btn-primary" href="/cargarencuestaproyecto/<%= resultado.idproyecto%>"> Cargar encuesta </a>
 </div>
 <br style="clear:both">
 <hr>
+
+<div align="middle">
+   <!-- <iframe style="width:50%;height:500px" align="middle" src="r_encuesta.url"></iframe> -->
+</div>
+
 <div id="modificar">
     <a class="btn btn-lg btn-primary" href="/modificarproyecto/<%= resultado.idproyecto%>">Modificar</a>
 </div>
