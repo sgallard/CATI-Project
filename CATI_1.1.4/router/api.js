@@ -111,6 +111,40 @@ router.get('/vercontacto_encuestador/:idp/:id', function(req,res,next){
 	}
 });
 
+router.get('/usuariorandom/:id', function (req, res, next) {
+	try {
+		models.proyecto_contacto.findAll({
+			where: {
+				idproyecto: req.params.id,
+				estado: {$ne : 'Encuesta finalizada'}
+			}
+		}).then(function (user) {
+			if((user != null) && (user.length!=0) ){
+				var i = Math.floor(Math.random()*user.length);
+				console.log(user);
+				models.contacto.findOne({
+					where: {
+						rutcontacto: user[i].rutcontacto
+					}
+				}).then(function (contacto) {
+					models.proyecto.findOne({
+						where: {
+							idproyecto: req.params.id
+						}
+					}).then(function (proyect) {
+						res.render('vercontacto_encuestador.html', {resultado: contacto, proyecto: proyect});
+					})
+				});
+			}
+			else{
+				res.redirect('/api/verproyectos');
+			}
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
+
 router.get('/verencuestadores', function (req, res, next) {
 		try {
 			models.encuestador.findAll().then(function (user) {

@@ -66,38 +66,20 @@
 
 
 <div>
-    <h1>Proyectos</h1>
+    <h1> &#9658Proyectos</h1>
 </div>
 <hr>
 
-
-<table class="table">
-    <thead>
-    <tr>
-        <th> ID </th>
-        <th> nombre </th>
-        <!--<th> Rut </th>-->
-        <th>  </th>
-
-    </tr>
-    </thead>
-    <% for (var i= 0;i< resultado.length;i++){ %>
-    <tbody>
-    <tr>
-        <td><%= resultado[i].idproyecto%></td>
-        <td><%= resultado[i].nombre%></td>
-        <td>    <a href="/vercontactosproyectoencuestador/<%= resultado[i].idproyecto%>">   Lista de contactos      </a>                 </td>
-
-
-
-
-    </tr>
-    <% }%>
-    </tbody>
-
-
-</table>
-
+<% for (var i= 0;i< resultado.length;i++){%>
+<div align="middle" style="padding-left: 10px; width: 33%; padding-top: 10px; float: left;">
+    <a style="text-decoration: none;" href="/usuariorandom/<%=resultado[i].idproyecto%>">
+    <div class="box" id="proyecto" style="background: #e3f0f4;">
+        <div class="box" id="hcustom" style="font-size: 35px; color: #292929;"> <%= resultado[i].nombre%></div>
+        <span style="color: #292929;"> <%= resultado[i].descripcion%> </span>
+    </div>
+</a>
+</div>
+<%}%>
 
 </body>
 </html>

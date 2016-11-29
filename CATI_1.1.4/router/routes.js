@@ -106,6 +106,12 @@ module.exports = function(app, passport) {
     app.get('/vercontactosproyectoencuestador/:id', isLoggedInEncuestador  , function(req, res) {
         res.redirect('/api/contactosproyectoencuestador/'+req.params.id+'');
     });
+
+
+    app.get('/usuariorandom/:id', isLoggedInEncuestador  , function(req, res) {
+        res.redirect('/api/usuariorandom/'+req.params.id+'');
+    });
+
     app.get('/verllamadas/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/verllamadas/'+req.params.id+'');
     });
