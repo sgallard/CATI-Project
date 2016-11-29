@@ -94,7 +94,7 @@
     <a class="btn btn-lg btn-primary" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Modificar</a>
 </div>
 <div id="llamadas">
-    <a class="btn btn-lg btn-primary" href="/verllamadasencuestador/<%= resultado[0].usuarioencuestador%>">Ver llamadas</a>
+    <a class="btn btn-lg btn-primary" href="/verllamadas/<%= resultado[0].usuarioencuestador%>">Ver llamadas</a>
 </div>
 <div id="eliminar">
     <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
