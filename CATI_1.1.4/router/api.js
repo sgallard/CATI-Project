@@ -65,7 +65,6 @@ router.get('/cargarencuestaproyecto/:id', function (req, res, next) {
 		console.log("Id incorrecto.");
 	}
 });
-
 router.post('/cargarencuestaproyecto/:id', function (req, res, next) {
 	try {
 		console.log("Ayyyylmao")
@@ -245,9 +244,33 @@ router.post('/crearencuestador', function (req, res, next) {
 			return next(ex);
 		}
 	});
+
+router.post('/crearllamada/:id/:idp',function(req,res,next){
+	try {
+		models.llamada.create({
+			usuarioencuestador: req.user.usuarioencuestador,
+			rutcontacto: req.params.id,
+			duracion: req.body.duracion,
+			estado: req.body.estado,
+			id_grabacion: req.body.id_grabacion
+		});
+		/*.then(function (result) {
+		 models.Rol.create({
+		 permiso: req.body.permiso,
+		 UsuarioId: result.id
+		 }); }); */
+		res.redirect("/vercontactosproyectoencuestador/"+req.params.idp);
+
+	}
+	catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+
+
+});
 router.post('/crearproyecto', function (req, res, next) {
     try {
-    	console.log("Ayyy lemeo")
         models.proyecto.create({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion

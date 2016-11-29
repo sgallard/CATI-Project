@@ -76,16 +76,55 @@
 <div style="padding-left:20px">
     <h3> Rut: <%= resultado.rutcontacto%></h3>
     <h3> Dirección: <%= resultado.direccion%></h3>
-    <h3> Número: <%= resultado.numero%></h3>
+    <nh3> Número: <%= resultado.numero%></nh3>
     <h3> ID proyecto actual: <%=id_proyecto%> </h3>
 </div>
 
 <div id="modificar">
     <a class="btn btn-lg btn-primary" href="/modificarestado/<%=id_proyecto%>/<%= resultado.rutcontacto%>">Modificar estado</a>
 </div>
+
+<h1>Registrar llamada </h1>
+<form class="form-horizontal" action="/api/crearllamada/<%= resultado.rutcontacto%>/<%=id_proyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
+    <fieldset>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Duracion</label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" id="duracion" name="duracion" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">ID grabacion </label>
+            <div class="col-lg-3">
+                <input type="number" readonly value=1 class="form-control" id="id_grabacion" name="id_grabacion" placeholder="Nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Resultado de llamada</label>
+            <div class="col-lg-3">
+                <select name="nuevo_estado" id="nuevo_estado">
+                    <option value="Realizada">Realizada</option>
+                    <option value="No se termino">No se termino</option>
+                    <option value="Se corto el internet">Se corto el internet</option>
+                    <option value="Contacto corto la llamada">Contacto corto la llamada</option>
+                    <option value="Se casho el sistema">Se casho el sistema</option>
+                    <option value="everytime">everytime you fail you lose 10 years of life</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
 <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
-<div id="SkypeButton_Call_numero_contacto">
-    <script type="text/javascript">
+<div id="SkypeButton_Call_numero_contacto" >
+    <script type="text/javascript" >
         Skype.ui({
             "name": "call",
             "element": "SkypeButton_Call_numero_contacto",

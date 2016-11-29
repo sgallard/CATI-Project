@@ -125,6 +125,7 @@ module.exports = function(app, passport) {
     app.get('/crearproyecto',isLoggedInAdmin, function (req, res) {
         res.render('crearproyecto.html');
     });
+
     app.get('/modificarencuestador/:id',isLoggedInAdmin, function (req, res) {
         res.render('modificarencuestador.html',{usuarioencuestador: req.params.id});
     });
