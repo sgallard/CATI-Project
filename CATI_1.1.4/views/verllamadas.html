@@ -96,8 +96,9 @@
         <th>Fecha</th>
         <th> Duracion   </th>
         <th> Estado </th>
+        <th>  Calificacion         </th>
         <th> Audio </th>
-        <th> Caificación   </th>
+        <th> Caificar   </th>
         <!--<th> Rut </th>-->
         <!--<th>  </th>
         <th> </th>-->
@@ -114,15 +115,16 @@
         <td><%= resultado[i].createdAt%></td>
         <td><%= resultado[i].duracion%></td>
         <td><%= resultado[i].estado%></td>
+        <td>        <%= resultado[i].calificacion%>            </td>
         <td><div id="llamadas">
             <a class="btn btn-lg btn-primary" href="/audio/<%= resultado[i].id_grabacion%>">Ver</a>
         </div></td>
         <td>
-            <form class="form-horizontal" action="/api/calificacion/<%= resultado[i].id %>" method="POST" enctype="application/x-www-form-urlencoded">
+            <form class="form-horizontal" action="/api/calificacion/<%= resultado[i].id %>/<%=resultado[i].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
                 <fieldset>
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">ID grabacion </label>
+                        <label class="col-lg-2 control-label"> </label>
                         <div class="col-lg-3">
                             <input type="number"  class="form-control" id="calificacion" name="calificacion" >
                         </div>
@@ -131,8 +133,7 @@
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Calificar</button>
                         </div>
                     </div>
                 </fieldset>

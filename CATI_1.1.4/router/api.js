@@ -158,19 +158,43 @@ router.get('/verencuestadores', function (req, res, next) {
 			return next(ex);
 		}
 	});
+
 router.get('/verllamadas/:id', function (req, res, next) {
 	try {
-		models.llamada.findAll(({
+		models.llamada.findAll({
 			where: {
 				usuarioencuestador: req.params.id
 			}
-		})).then(function (user) {
-			res.render('verllamadas.html', {resultado: user});
+		}).then(function (user) {
+			models.calificacion.findAll({
+				where: {
+					usuarioadmin: req.user.usuarioadmin
+				}
+			}).then(function(calf){
+				for (var i= 0;i< user.length;i++) {
+					for (var j = 0; j < calf.length; j++) {
+						if ( calf[j].id == user[i].id) {
+							user[i].calificacion = calf[j].nota;
+
+						}
+
+					}
+				}
+				res.render('verllamadas.html', {resultado: user});
+
+
+			});
+
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
 	}
-});
+})
+
+
+
+
+
 router.get('/verproyectos', function (req, res, next) {
 	try {
 		/*var query = url.parse(req.url,true).query;
@@ -279,8 +303,7 @@ router.post('/crearencuestador', function (req, res, next) {
 	});
 
 
-
-router.post('/calificacion/:id',function(req,res,next){
+router.post('/calificacion/:id/:ide',function(req,res,next){
 	try {
 		models.calificacion.findOne({
 			where: {
@@ -290,21 +313,17 @@ router.post('/calificacion/:id',function(req,res,next){
 		}).then(function (user) {
 			if (user==undefined){
 				models.calificacion.create({
-
 					id: req.params.id,
 					usuarioadmin: req.user.usuarioadmin,
 					nota: req.body.calificacion
 				});
-
 			}
 			else{
 				user.updateAttributes({
 					nota: req.body.calificacion
 				});
-
-
 			}
-			res.redirect("/verllamadas/" + req.params.id);
+			res.redirect("/verllamadas/" + req.params.ide);
 		});
 	}
 	catch (ex) {
@@ -314,6 +333,11 @@ router.post('/calificacion/:id',function(req,res,next){
 
 
 });
+
+
+
+
+
 router.post('/crearllamada/:id/:idp',function(req,res,next){
 	try {
 		models.llamada.create({
