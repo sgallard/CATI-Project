@@ -125,7 +125,20 @@ router.get('/verencuestadores', function (req, res, next) {
 			return next(ex);
 		}
 	});
-
+router.get('/verllamadas/:id', function (req, res, next) {
+	try {
+		//console.log(req);
+		models.llamada.findAll(({
+			where: {
+				usuarioencuestador: req.params.id
+			}
+		})).then(function (user) {
+			res.render('verllamadas.html', {resultado: user});
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
 router.get('/verproyectos', function (req, res, next) {
 	try {
 		/*var query = url.parse(req.url,true).query;

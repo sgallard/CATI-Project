@@ -106,10 +106,13 @@ module.exports = function(app, passport) {
     app.get('/vercontactosproyectoencuestador/:id', isLoggedInEncuestador  , function(req, res) {
         res.redirect('/api/contactosproyectoencuestador/'+req.params.id+'');
     });
-
+    app.get('/verllamadas/:id',isLoggedInAdmin, function (req, res) {
+        res.redirect('/api/verllamadas/'+req.params.id+'');
+    });
     app.get('/vercontactosproyecto/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/contactosproyecto/'+req.params.id+'');
     });
+
     app.get('/cargarencuestaproyecto/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/cargarencuestaproyecto/'+req.params.id+'');
     });

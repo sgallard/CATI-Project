@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Sistema CATI 1.1.4</title>
@@ -18,12 +18,9 @@
     <script  src="/node_modules/angular/angular.js"></script>
     <script  src="/node_modules/angular/angular.min.js"></script>
     <script src="/controllers/encuestadores.js"></script>
-    <style>
-        div#modificar   { padding-left:20px; float: left; }
-    </style>
-</head>
-<body>
 
+</head>
+<body ng-app="Cati"  ng-controller="encuestadores">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -84,25 +81,49 @@
     </div>
 </nav>
 
-<h1 style="padding-left:10px">Encuestador: <%= resultado[0].usuarioencuestador %></h1>
-<hr>
-<div style="padding-left:20px">
-    <h3>Nombre: <%= resultado[0].nombre %></h3>
-    <h3>Contraseña: <%= resultado[0].contrasena %></h3>
-</div>
-<div id="modificar">
-    <a class="btn btn-lg btn-primary" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Modificar</a>
+
+<div>
+    <h1> Llamadas del encuestador </h1>
 </div>
 
-<div id="eliminar">
-    <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
-        <div class="form-group">
-            <div class="col-lg-3">
-                <button type="submit" class="btn btn-lg" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+<hr>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Rut contacto llamado </th>
+        <th>Fecha</th>
+        <th> Duracion   </th>
+        <th> Estado </th>
+        <th> Audio </th>
+        <!--<th> Rut </th>-->
+        <!--<th>  </th>
+        <th> </th>-->
+
+
+
+    </tr>
+    </thead>
+    <% for (var i= 0;i< resultado.length;i++){ %>
+    <tbody>
+    <tr>
+        <td><%= resultado[i].idLlamada%></td>
+        <td><%= resultado[i].rutcontacto%></td>
+        <td><%= resultado[i].cr2eatedAt%></td>
+        <td><%= resultado[i].duracion%></td>
+        <td><%= resultado[i].estado%></td>
+        <td><div id="llamadas">
+            <a class="btn btn-lg btn-primary" href="/audio/<%= resultado[i].id_grabacion%>">Ver</a>
+        </div></td>
+
+
+
+    </tr>
+    <% }%>
+    </tbody>
+</table>
+
+
 </body>
-</html>
+</html>>
