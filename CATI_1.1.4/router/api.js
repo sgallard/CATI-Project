@@ -419,13 +419,9 @@ router.post('/crearproyecto', function (req, res, next) {
     try {
         models.proyecto.create({
             nombre: req.body.nombre,
-            descripcion: req.body.descripcion
+            descripcion: req.body.descripcion,
+			finalizado: 0
         });
-        /*.then(function (result) {
-         models.Rol.create({
-         permiso: req.body.permiso,
-         UsuarioId: result.id
-         }); }); */
         res.redirect("/verproyectos");
 
     }
@@ -551,12 +547,11 @@ router.post('/modificarproyecto/:id', function (req, res, next) {
 				user.updateAttributes({
 					idproyecto: req.body.idproyecto,
 					nombre: req.body.nombre,
-					descripcion: req.body.descripcion
+					descripcion: req.body.descripcion,
+					finalizado: req.body.finalizado
 				}).then(function (result) {
 					res.redirect('/api/proyecto/'+req.params.id);
 				})
-
-
 			}
 		});
 	}

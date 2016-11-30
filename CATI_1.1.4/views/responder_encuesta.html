@@ -54,6 +54,11 @@
 <hr>
 <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
 
+<%if (encuesta==undefined){%>
+<div align = "middle">
+    <div style="width: 33%" align="middle" class="alert alert-danger">Este proyecto no tiene encuestas disponibles; contacte algún administrador</div>
+</div>
+<%}else{%>
 <div align="left" style="padding-left: 1%">
     <div align="middle" style="width: 16.05%; float:left; border-radius: 2%">
         <div class="box" id="proyecto" style="background: #e8e8e3;border-radius: 1%; padding: 1%">
@@ -118,6 +123,6 @@
 </div>
 
 <br style="clear:both"></br>
-
+<%}%>
 </body>
 </html>

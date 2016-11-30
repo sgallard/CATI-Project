@@ -76,7 +76,8 @@
 </span>
 <hr style="clear : both">
 
-<% for (var i= 0;i< resultado.length;i++){%>
+<% for (var i= 0;i< resultado.length;i++){
+if(resultado[i].finalizado==0){%>
 <div align="middle" style="padding-left: 10px; width: 33%; padding-top: 10px; float: left;">
     <a style="text-decoration: none;" href="/usuariorandom/<%=resultado[i].idproyecto%>">
     <div class="box" id="proyecto" style="background: #e3f0f4;">
@@ -85,7 +86,7 @@
     </div>
 </a>
 </div>
-<%}%>
+<%}}%>
 
 </body>
 </html>

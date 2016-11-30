@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement:true
         },
         nombre: DataTypes.STRING,
+        finalizado: DataTypes.INTEGER,
         descripcion: DataTypes.STRING
     }, {
         timestamps:false,

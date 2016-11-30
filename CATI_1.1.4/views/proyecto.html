@@ -95,6 +95,9 @@
             <span style="color: #292929;">
             <div align="left" style="padding-left: 30px; font-size: 20px">ID: <%= resultado.idproyecto%></div>
             <div align="left" style="padding-left: 30px; font-size: 20px">Descripción: <%= resultado.descripcion%></div>
+                <%if (resultado.finalizado){%>
+            <div align="left" style="padding-left: 30px; font-size: 20px; color: #77dd77;">Proyecto FINALIZADO</div>
+                <%}%>
             </span>
         </div>
 
