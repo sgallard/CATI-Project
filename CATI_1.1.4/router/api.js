@@ -168,25 +168,7 @@ router.get('/verllamadas/:id', function (req, res, next) {
 				usuarioencuestador: req.params.id
 			}
 		}).then(function (user) {
-			models.calificacion.findAll({
-				where: {
-					usuarioadmin: req.user.usuarioadmin
-				}
-			}).then(function(calf){
-				for (var i= 0;i< user.length;i++) {
-					for (var j = 0; j < calf.length; j++) {
-						if ( calf[j].id == user[i].id) {
-							user[i].calificacion = calf[j].nota;
-
-						}
-
-					}
-				}
 				res.render('verllamadas.html', {resultado: user});
-
-
-			});
-
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
@@ -323,22 +305,6 @@ router.post('/calificacion/:id/:ide',function(req,res,next){
 
 });
 
-router.post('/crearllamada/:id/:idp',function(req,res,next){
-	try {
-		models.llamada.create({
-			usuarioencuestador: req.user.usuarioencuestador,
-			rutcontacto: req.params.id,
-			estado: req.body.estado
-		});
-		res.redirect("/vercontactosproyectoencuestador/"+req.params.idp);
-	}
-	catch (ex) {
-		console.error("Internal error:" + ex);
-		return next(ex);
-	}
-
-
-});
 router.post('/crearproyecto', function (req, res, next) {
     try {
         models.proyecto.create({
@@ -421,6 +387,11 @@ router.post('/modificarestado/', function (req, res, next){
 			user.updateAttributes({
 				estado: req.body.nuevo_estado
 			}).then(function (result){
+				models.llamada.create({
+					usuarioencuestador: req.user.usuarioencuestador,
+					rutcontacto: req.body.rut_contacto,
+					estado: req.body.estado_llamada
+				});
 				res.redirect('/api/contactosproyectoencuestador/'+req.body.id_proyecto);
 			})
 		});
