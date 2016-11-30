@@ -68,7 +68,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido <%= nombre %>! <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <!--<li><a href="#">Ver Perfil</a></li>-->
                                 <li><a href="/logout">Cerrar Sesión</a></li>
@@ -130,6 +130,7 @@
     <thead>
     <tr>
         <th> URL </th>
+        <th>    </th>
     </tr>
     </thead>
     <% for (var i= 0;i< r_encuesta.length;i++){ %>
@@ -137,6 +138,16 @@
     <tr>
         <td><a href="<%= r_encuesta[i].url%>">
             <%= r_encuesta[i].url%></a></td>
+        <td><div id="delete" style="float:left">
+            <form class="form-horizontal" action="/api/eliminarencuesta/<%=  r_encuesta[i].idencuesta %>/<%= resultado.idproyecto %>" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <div class="col-lg-3">
+                        <button  type="submit" class="btn btn-danger btn-lg"  id="url" name="url" placeholder="url">Eliminar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div></td>
     </tr>
     <% }%>
     </tbody>
@@ -155,6 +166,7 @@ un archivo a cargar.</div>
     <tr>
         <th> Rut </th>
         <th> Estado </th>
+        <th>         </th>
     </tr>
     </thead>
     <% for (var i= 0;i< contacto.length;i++){ %>
@@ -162,6 +174,14 @@ un archivo a cargar.</div>
     <tr>
         <td><%= contacto[i].rutcontacto%></td>
         <td><%= contacto[i].estado%></td>
+        <td>
+            <div id="perfil" style="float:left">
+                        <div class="col-lg-3">
+                            <a class="btn btn-lg btn-primary" href="/api/vercontacto/<%= contacto[i].rutcontacto%>/<%=resultado.nombre%>/<%=resultado.idproyecto%>">Ver contacto </a>                            </button>
+                        </div>
+            </div>
+
+        </td>
     </tr>
     <% }%>
     </tbody>

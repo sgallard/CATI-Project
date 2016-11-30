@@ -43,7 +43,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/audios',isLoggedInAdmin,function (req,res) {
-            res.render('audios.html',{message: ""});
+            res.render('audios.html',{message: "",nombre: req.user.nombre});
         });
 
     app.post('/audios',isLoggedInAdmin,function (req,res) {
@@ -56,9 +56,9 @@ module.exports = function(app, passport) {
             }
             try{
                 var files = fs.readdirSync(localizacion);
-                res.render('audioslista.html',{ls: files, date: req.body.fecha, directorio: direc});
+                res.render('audioslista.html',{ls: files, date: req.body.fecha, directorio: direc,nombre: req.user.nombre});
             }catch (ex){
-                res.render('audios.html',{message:"No hay audios grabados para la fecha "+req.body.fecha});
+                res.render('audios.html',{message:"No hay audios grabados para la fecha "+req.body.fecha,nombre: req.user.nombre});
             }
         });
 
@@ -163,14 +163,14 @@ module.exports = function(app, passport) {
         res.redirect('/api/proyecto/'+req.params.id);
     });
     app.get('/crearencuestador',isLoggedInAdmin, function (req, res) {
-        res.render('crearencuestador.html');
+        res.render('crearencuestador.html',{nombre: req.user.nombre});
     });
     app.get('/crearproyecto',isLoggedInAdmin, function (req, res) {
-        res.render('crearproyecto.html');
+        res.render('crearproyecto.html',{nombre: req.user.nombre});
     });
 
     app.get('/modificarencuestador/:id',isLoggedInAdmin, function (req, res) {
-        res.render('modificarencuestador.html',{usuarioencuestador: req.params.id});
+        res.render('modificarencuestador.html',{usuarioencuestador: req.params.id,nombre: req.user.nombre});
     });
     app.get('/modificarproyecto/:id',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/modificarproy/'+req.params.id);
@@ -184,13 +184,13 @@ module.exports = function(app, passport) {
     });
 
     app.get('/crearUsuario',isLoggedInAdmin, function (req, res) {
-        res.render('crearencuestador.html', {title: 'Registrar Usuarios'});
+        res.render('crearencuestador.html', {title: 'Registrar Usuarios',nombre: req.user.nombre});
     });
     app.get('/verproyectos',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/verproyectos');
 
     });
-    app.get('/vercontacto_encuestador/:idp/:id', function(req, res){
+    app.get('/vercontacto_encuestador/:idp/:id',isLoggedInEncuestador, function(req, res){
         res.redirect('/api/vercontacto_encuestador/'+req.params.idp+'/'+req.params.id);
     });
 
@@ -199,7 +199,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/modificarestado/:idp/:id', function (req, res) {
-        res.render('modificarestado.html', {id_proyecto:req.params.idp, rut_contacto: req.params.id});
+        res.render('modificarestado.html', {id_proyecto:req.params.idp, rut_contacto: req.params.id,nombre: req.user.nombre});
     });
 };
 

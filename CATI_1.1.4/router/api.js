@@ -43,7 +43,7 @@ router.get('/cargarencuestaproyecto/:id', function (req, res, next) {
 				idproyecto: req.params.id
 			}
 		})).then(function (user) {
-			res.render('cargarencuesta.html', {proyecto: user});
+			res.render('cargarencuesta.html', {proyecto: user,nombre: req.user.nombre});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
@@ -57,7 +57,7 @@ router.get('/cargarcontactos/:id', function (req, res, next) {
 				idproyecto: req.params.id
 			}
 		})).then(function (proyect) {
-			res.render('cargarcontactos.html', {proyecto: proyect});
+			res.render('cargarcontactos.html', {proyecto: proyect,nombre:req.user.nombre});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
@@ -107,6 +107,26 @@ router.get('/vercontacto_encuestador/:idp/:id', function(req,res,next){
 	} catch (ex) {
 		console.log("id incorrecto.");
 	}
+});
+
+router.get('/vercontacto/:id/:nmp/:idp', function(req,res,next){
+    try {
+        models.contacto.findOne({
+            where: {
+                rutcontacto: req.params.id
+            }
+        }).then(function (user) {
+            models.llamada.findAll({
+                where: {
+                    rutcontacto: req.params.id
+                }
+            }).then(function(llam){
+                res.render('vercontacto.html', {resultado: user,llamada: llam,nombrep: req.params.nmp,idproyecto: req.params.idp,nombre: req.user.nombre});
+            });
+        });
+    } catch (ex) {
+        console.log("id incorrecto.");
+    }
 });
 
 router.get('/realizarencuesta/:id_p/:id_c', function(req,res,next){
@@ -196,7 +216,7 @@ router.get('/verencuestadores', function (req, res, next) {
 			models.encuestador.findAll().then(function (user) {
 				//for(var x=0;x<user.length;x++){
 				//console.log(user[x].username);
-				res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user});
+				res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user,nombre: req.user.nombre});
 			});
 			//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
 		} catch (ex) {
@@ -212,7 +232,7 @@ router.get('/verllamadas/:id', function (req, res, next) {
 				usuarioencuestador: req.params.id
 			}
 		}).then(function (user) {
-				res.render('verllamadas.html', {resultado: user});
+				res.render('verllamadas.html', {resultado: user,nombre: req.user.nombre});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
@@ -223,7 +243,7 @@ router.get('/verproyectos', function (req, res, next) {
 	try {
 		models.proyecto.findAll().then(function (user) {
 			if (req.user.usuarioadmin!=undefined){
-				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});}
+				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user,nombre: req.user.nombre});}
 			else if(req.user.usuarioencuestador!=undefined){
 				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: "",nombre: req.user.nombre});
 			}
@@ -245,7 +265,7 @@ router.get('/encuestador/:id', function (req, res, next) {
 					usuarioencuestador: req.params.id
 				}
 			}).then(function (call) {
-				res.render('encuestador.html', {resultado: user, llamada: call});
+				res.render('encuestador.html', {resultado: user, llamada: call,nombre: req.user.nombre});
 			});
 			});
 		} catch (ex) {
@@ -269,7 +289,7 @@ router.get('/proyecto/:id', function (req, res, next) {
 						idproyecto: req.params.id
 					}
 				}).then(function(contact){
-				res.render('proyecto.html', {resultado: user, r_encuesta: ENC, contacto:contact});
+				res.render('proyecto.html', {resultado: user, r_encuesta: ENC, contacto:contact,nombre: req.user.nombre});
 				});
 			});
 		});
@@ -285,7 +305,7 @@ router.get('/contactosproyecto/:id', function (req, res, next) {
 				idproyecto: req.params.id
 			}
 		}).then(function (user) {
-			res.render('vercontactosproyecto.html', {resultado:user,id:req.params.id});
+			res.render('vercontactosproyecto.html', {resultado:user,id:req.params.id,nombre: req.user.nombre});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
@@ -314,7 +334,7 @@ router.get('/modificarproy/:id', function (req, res, next){
 				idproyecto: req.params.id
 			}
 		}).then(function (user) {
-			res.render("modificarproyecto.html",{resultado:user[0]});
+			res.render("modificarproyecto.html",{resultado:user[0],nombre: req.user.nombre});
 		});
 	} catch (ex) {
 		console.log("ID incorrecto.");
@@ -495,6 +515,20 @@ router.post('/modificarproyecto/:id', function (req, res, next) {
 	}
 });
 
+router.post('/eliminarencuesta/:id/:idp', function (req, res, next) {
+    try {
+        console.log(req.params);
+        models.encuesta.destroy({where: {idencuesta: req.params.id}}).then(function () {
+            return models.encuestador.findAll().then(function (user) {
+                res.redirect('/api/proyecto/'+req.params.idp);
+            })
+        })
+    }
+    catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});
 router.post('/eliminarencuestador/:id', function (req, res, next) {
 		try {
 			console.log(req.params);
@@ -522,4 +556,18 @@ router.post('/eliminarproyecto/:id', function (req, res, next) {
         return next(ex);
     }
 });
+router.post('/eliminarcontacto/:id/:idp', function (req, res, next) {
+    try {
+        models.contacto.destroy({where: {rutcontacto: req.params.id}}).then(function () {
+            models.proyecto_contacto.destroy({where: {rutcontacto: req.params.id}}).then(function (user) {
+                res.redirect('/api/proyecto/'+req.params.idp);
+            })
+        })
+    }
+    catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});
+
 
