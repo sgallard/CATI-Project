@@ -181,7 +181,8 @@ router.get('/usuariorandom/:id', function (req, res, next) {
 		models.proyecto_contacto.findAll({
 			where: {
 				idproyecto: req.params.id,
-				estado: {$ne : 'Encuesta finalizada'}
+				estado: {$ne : 'Encuesta finalizada'},
+				estado: {$ne: "Elige no responder encuesta"}
 			}
 		}).then(function (user) {
 			if((user != null) && (user.length!=0) ){
@@ -523,11 +524,13 @@ router.post('/modificarestado/:id_p/:rut_c', function (req, res, next){
 			user.updateAttributes({
 				estado: req.body.nuevo_estado
 			}).then(function (result){
+				if(req.body.estado_llamada!="No se realizó"){
 				models.llamada.create({
 					usuarioencuestador: req.user.usuarioencuestador,
 					rutcontacto: req.params.rut_c,
 					estado: req.body.estado_llamada
 				});
+				}
 				res.redirect('/api/usuariorandom/'+req.params.id_p);
 			})
 		});
