@@ -86,7 +86,7 @@
 <hr>
 <h3> &#9658 Información</h3>
 <div align="middle">
-    <div align="middle" style="width: 31.8%">
+    <div align="middle" style="width: 28%">
         <div class="box" id="encuestador" style="background: #e8e8e3;padding-bottom: 5%;padding-top: 2%;border-radius: 1%">
             <span style="color: #292929;">
             <div align="left" style="padding-left: 30px; font-size: 30px">Nombre: <%= resultado[0].nombre%></div>
@@ -95,6 +95,9 @@
         </div>
         <div id="modificar" style="float:left">
             <a class="btn btn-lg btn-primary" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Editar datos</a>
+        </div>
+        <div id="calificar" style="float:left">
+            <a class="btn btn-lg btn-primary" href="/calificarencuestador/<%= resultado[0].usuarioencuestador%>/0">Calificar</a>
         </div>
         <div id="eliminar" style="float: left">
             <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">

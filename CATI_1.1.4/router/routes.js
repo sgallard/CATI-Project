@@ -179,6 +179,10 @@ module.exports = function(app, passport) {
         res.redirect('/api/modificarencuestador/'+req.params.id);
     });
 
+    app.get('/calificarencuestador/:id/:msg',isLoggedInAdmin, function (req, res) {
+        res.redirect('/api/calificarencuestador/'+req.params.id+'/'+req.params.msg);
+    });
+
     app.get('/verencuestadores',isLoggedInAdmin, function (req, res) {
         res.redirect('/api/verencuestadores');
     });

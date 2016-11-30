@@ -254,6 +254,27 @@ router.get('/verproyectos', function (req, res, next) {
 	}
 });
 
+router.get('/calificarencuestador/:id/:msg', function (req, res, next) {
+	try {
+		models.calificacion.findAll({
+			where: {
+				usuarioencuestador: req.params.id
+			}
+		}).then(function (grade) {
+			var mensaje = "";
+			if(req.params.msg==1){
+				mensaje = "Encuestador calificado correctamente";
+			}
+			if(req.params.msg==2){
+				mensaje = "Encuestador ya ha sido calificado hoy";
+			}
+			res.render('calificarencuestador.html',{usuarioencuestador: req.params.id, calificacion:grade, message: mensaje,nombre: req.user.nombre});
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
+
 router.get('/encuestador/:id', function (req, res, next) {
 		try {
 			models.encuestador.findAll({
@@ -413,6 +434,36 @@ router.post('/crearproyecto', function (req, res, next) {
         return next(ex);
     }
 });
+
+router.post('/calificacion/:id_e/',function(req,res,next){
+	try {
+		var mensaje=1;
+		models.calificacion.findOne({
+			where: {
+				usuarioencuestador: req.params.id_e,
+				fecha: req.body.fecha
+			}
+		}).then(function (user) {
+			if (user==undefined){
+				models.calificacion.create({
+					nota: req.body.nota,
+					comentario: req.body.comentario,
+					fecha: req.body.fecha,
+					usuarioencuestador: req.params.id_e
+				});
+			}
+			else{
+				mensaje =2;
+			}
+			res.redirect('/api/calificarencuestador/'+req.params.id_e+'/'+mensaje);
+		});
+	}
+	catch (ex) {
+		console.error("Internal error:" + ex);
+		return next(ex);
+	}
+});
+
 router.put('/usuarios/:id', function (req, res, next) {
 		try {
 

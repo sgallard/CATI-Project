@@ -1,9 +1,3 @@
-/**
- * Created by rodrigo on 10-09-16.
- */
-
-
-
 
 "use strict";
 var Sequelize = require('sequelize');
@@ -11,8 +5,13 @@ module.exports = function(sequelize, DataTypes) {
     var calificacion;
     calificacion = sequelize.define("calificacion", {
 
-        nota: DataTypes.INTEGER
-    }, {timestamps:true,
+        nota: DataTypes.INTEGER,
+        comentario: DataTypes.STRING,
+        fecha:  {
+            type: DataTypes.STRING,
+            primaryKey: true
+        },
+    }, {timestamps:false,
         updatedAt: false,
         classMethods: {
             associate: function (models) {
@@ -20,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
                     onDelete: "CASCADE",
                     foreignKey: {
                         name:"usuarioencuestador",
+                        primaryKey: true,
                         allowNull: false
                     }
                 });

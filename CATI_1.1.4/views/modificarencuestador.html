@@ -82,9 +82,8 @@
     </div>
 </nav>
 
-<h1>&#9658<a href="/verencuestadores" style="text-decoration: none; color : #292929">Proyectos</a>
-    &#9658<a href="/encuestador?id=<%= usuarioencuestador%>" style="text-decoration: none; color : #292929"><%=usuarioencuestador%> </a>
-    &#9658 Editar datos</h1>
+<h1>&#9658<a href="/verencuestadores" style="text-decoration: none; color : #292929">Encuestadores</a>&#9658<a href="/encuestador?id=<%= usuarioencuestador%>" style="text-decoration: none; color : #292929"><%=usuarioencuestador%> </a>
+    &#9658Editar datos</h1>
 <hr>
 
 <form class="form-horizontal" action="/api/modificarencuestador/<%= usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
@@ -103,14 +102,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label">contraseña</label>
+            <label class="col-lg-2 control-label">Contraseña</label>
             <div class="col-lg-3">
                 <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contrasena">
             </div>
         </div>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </div>
