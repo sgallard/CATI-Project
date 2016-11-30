@@ -13,59 +13,59 @@ module.exports = function(app, passport) {
         res.render('index.html', {title: 'CATI Beta '});
     });
 
-    app.get('/cargarcontactos/:id',isLoggedInAdmin, function(req, res) {
+    app.get('/cargarcontactos/:id', isLoggedInAdmin, function (req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('cargarcontactos.html', { message: req.flash('loginMessage'),idproyecto: req.params.id });
+        res.render('cargarcontactos.html', {message: req.flash('loginMessage'), idproyecto: req.params.id});
     });
 
-    app.get('/encuestador', function(req, res) {
+    app.get('/encuestador', function (req, res) {
         // render the page and pass in any flash data if it exists
         var id = req.query.id;
-        res.redirect('/api/encuestador/'+id);
-       // res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user});
-       // res.render('encuestador.html', { message: req.flash('loginMessage') });
+        res.redirect('/api/encuestador/' + id);
+        // res.render('verencuestadores.html', {title: 'Listar encuestadores', resultado: user});
+        // res.render('encuestador.html', { message: req.flash('loginMessage') });
     });
 
-    app.get('/login', function(req, res) {
+    app.get('/login', function (req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('login.html', { message: req.flash('loginMessage') });
+        res.render('login.html', {message: req.flash('loginMessage')});
     });
-    app.get('/loginencuestador', function(req, res) {
+    app.get('/loginencuestador', function (req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('loginencuestador.html', { message: req.flash('loginMessage') });
+        res.render('loginencuestador.html', {message: req.flash('loginMessage')});
     });
 
 
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/api/verencuestadores', // redirect to the secure profile section
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect: '/api/verencuestadores', // redirect to the secure profile section
+        failureRedirect: '/login', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
     }));
 
     app.post('/loginencuestador', passport.authenticate('local-login-encuestador', {
 
-        successRedirect : '/api/verproyectos', // redirect to the secure profile section
-        failureRedirect : '/loginencuestador', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect: '/api/verproyectos', // redirect to the secure profile section
+        failureRedirect: '/loginencuestador', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
     }));
 
 
-    app.get('/vercontactos', isLoggedInAdmin, function(req, res) {
+    app.get('/vercontactos', isLoggedInAdmin, function (req, res) {
         res.redirect('/api/contactos');
     });
 
-    app.get('/profile', isLoggedInAdmin, function(req, res) {
+    app.get('/profile', isLoggedInAdmin, function (req, res) {
         res.render('profile.html', {
-            user : req.user // get the user out of session and pass to template
+            user: req.user // get the user out of session and pass to template
         });
     });
 
-    app.get('/logout', function(req, res) {
+    app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
     });
 
-    app.post('/cargarcontactos/:id', function(req, res) {
+    app.post('/cargarcontactos/:id', function (req, res) {
         var archivoContactos;
         var fs;
         var localizacion;
@@ -77,31 +77,35 @@ module.exports = function(app, passport) {
         archivoContactos = req.files.archivox;
         console.log(archivoContactos.name);
         localizacion = __dirname;
-        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Contactos/');
+        localizacion = localizacion.replace('CATI_1.1.4/router', 'Archivos/Contactos/');
         console.log(__dirname);
         console.log(localizacion);
         connection.connect();
-        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS ;", function(err) {if (!err) {
-            console.log('All good.');
-        }
-        else{
-            console.log('Error while performing Query.');
-            res.send('Error al subir archivo.');
-        }
-        });
-        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE proyecto_contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS  (@col1,@col2,@col3,@col4)  set   `estado` = 'Disponible' , `rutcontacto` = @col1 , `idproyecto` = '"+req.params.id+"'", function(err) {
+        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS ;", function (err) {
             if (!err) {
                 console.log('All good.');
             }
-            else{
+            else {
                 console.log('Error while performing Query.');
                 res.send('Error al subir archivo.');
             }
-                 });
+        });
+        connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE proyecto_contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS  (@col1,@col2,@col3,@col4)  set   `estado` = 'Disponible' , `rutcontacto` = @col1 , `idproyecto` = '" + req.params.id + "'", function (err) {
+            if (!err) {
+                console.log('All good.');
+            }
+            else {
+                console.log('Error while performing Query.');
+                res.send('Error al subir archivo.');
+            }
+        });
         connection.end();
-        res.redirect('/api/proyecto/'+req.params.id+'');
+        res.redirect('/api/proyecto/' + req.params.id + '');
     });
 
+    app.get('/realizarencuesta/:id_p/:id_c', isLoggedInEncuestador  , function(req, res) {
+        res.redirect('/api/realizarencuesta/'+req.params.id_p+'/'+req.params.id_c+'');
+    });
 
     app.get('/vercontactosproyectoencuestador/:id', isLoggedInEncuestador  , function(req, res) {
         res.redirect('/api/contactosproyectoencuestador/'+req.params.id+'');
@@ -156,6 +160,11 @@ module.exports = function(app, passport) {
     app.get('/vercontacto_encuestador/:idp/:id', function(req, res){
         res.redirect('/api/vercontacto_encuestador/'+req.params.idp+'/'+req.params.id);
     });
+
+    app.get('/nuevocontacto/:id_p/:rut_c', function(req, res){
+        res.redirect('/api/nuevocontacto/'+req.params.id_p+'/'+req.params.rut_c);
+    });
+
     app.get('/modificarestado/:idp/:id', function (req, res) {
         res.render('modificarestado.html', {id_proyecto:req.params.idp, rut_contacto: req.params.id});
     });

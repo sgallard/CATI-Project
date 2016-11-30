@@ -111,6 +111,53 @@ router.get('/vercontacto_encuestador/:idp/:id', function(req,res,next){
 	}
 });
 
+router.get('/realizarencuesta/:id_p/:id_c', function(req,res,next){
+	try {
+		models.contacto.findOne({
+			where: {
+				rutcontacto: req.params.id_c
+			}
+		}).then(function (contact) {
+			models.proyecto.findOne({
+				where: {
+					idproyecto: req.params.id_p
+				}
+			}).then(function (proyect) {
+				models.encuesta.findAll({
+					where: {
+						idproyecto: req.params.id_p
+					}
+				}).then(function (ENC) {
+					res.render('responder_encuesta.html', {contacto: contact, proyecto: proyect, encuesta : ENC[0]});
+				})
+			});
+
+		});
+	} catch (ex) {
+		console.log("id incorrecto.");
+	}
+});
+
+router.get('/nuevocontacto/:id_p/:id_c', function(req,res,next){
+	try {
+		models.contacto.findOne({
+			where: {
+				rutcontacto: req.params.id_c
+			}
+		}).then(function (contact) {
+			models.proyecto.findOne({
+				where: {
+					idproyecto: req.params.id_p
+				}
+			}).then(function (proyect)
+				{res.render('modificarestado.html', {contacto: contact, proyecto: proyect});
+			});
+		});
+	} catch (ex) {
+		console.log("id incorrecto.");
+	}
+});
+
 router.get('/usuariorandom/:id', function (req, res, next) {
 	try {
 		models.proyecto_contacto.findAll({
@@ -121,7 +168,6 @@ router.get('/usuariorandom/:id', function (req, res, next) {
 		}).then(function (user) {
 			if((user != null) && (user.length!=0) ){
 				var i = Math.floor(Math.random()*user.length);
-				console.log(user);
 				models.contacto.findOne({
 					where: {
 						rutcontacto: user[i].rutcontacto
@@ -273,7 +319,6 @@ router.post('/crearencuestador', function (req, res, next) {
 		}
 	});
 
-
 router.post('/calificacion/:id/:ide',function(req,res,next){
 	try {
 		models.calificacion.findOne({
@@ -376,12 +421,12 @@ router.post('/modificarencuestador/:id', function (req, res, next) {
 			return next(ex);
 		}
 	});
-router.post('/modificarestado/', function (req, res, next){
+router.post('/modificarestado/:id_p/:rut_c', function (req, res, next){
 	try{
 		models.proyecto_contacto.findOne({
 			where:{
-				rutcontacto: req.body.rut_contacto,
-				idproyecto: req.body.id_proyecto
+				rutcontacto: req.params.rut_c,
+				idproyecto: req.params.id_p
 			}
 		}).then(function (user){
 			user.updateAttributes({
@@ -389,10 +434,10 @@ router.post('/modificarestado/', function (req, res, next){
 			}).then(function (result){
 				models.llamada.create({
 					usuarioencuestador: req.user.usuarioencuestador,
-					rutcontacto: req.body.rut_contacto,
+					rutcontacto: req.params.rut_c,
 					estado: req.body.estado_llamada
 				});
-				res.redirect('/api/contactosproyectoencuestador/'+req.body.id_proyecto);
+				res.redirect('/api/usuariorandom/'+req.params.id_p);
 			})
 		});
 	}
@@ -425,8 +470,6 @@ router.post('/modificarproyecto/:id', function (req, res, next) {
 		return next(ex);
 	}
 });
-
-
 
 router.post('/eliminarencuestador/:id', function (req, res, next) {
 		try {

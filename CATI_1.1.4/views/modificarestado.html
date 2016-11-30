@@ -70,26 +70,26 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<h1>Modificar estado de contacto : <%= rut_contacto%> </h1>
+<h1> &#9658<a href="/api/verproyectos" style="text-decoration: none; color : #292929">Proyectos</a> &#9658<%=proyecto.nombre%>  </h1>
+<hr>
+<div align="middle">
+<div align="middle" style="width: 37.4%;">
+    <div class="box" id="proyecto" style="background: #e8e8e3;padding-bottom: 5%;padding-top: 2%;border-radius: 1%">
+        <div class="box" id="hcustom" style="font-size: 35px; color: #292929;"> Contacto: <%= contacto.nombre%></div>
+        <span style="color: #292929;">
+        <div align="left" style="padding-left: 50px; font-size: 20px">Número: <%= contacto.numero%></div>
+        <div align="left" style="padding-left: 50px; font-size: 20px">Rut: <%= contacto.rutcontacto%></div>
+        <div align="left" style="padding-left: 50px; font-size: 20px">Dirección: <%= contacto.direccion%></div>
+    </span>
+    </div>
 
-<form class="form-horizontal" action="/api/modificarestado/" method="POST" enctype="application/x-www-form-urlencoded">
+
+<div style="background-color: #e8e8e3;">
+<form class="form-horizontal" action="/api/modificarestado/<%=proyecto.idproyecto%>/<%=contacto.rutcontacto%>" method="POST" enctype="application/x-www-form-urlencoded">
     <fieldset>
-        <legend></legend>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Rut contacto</label>
-            <div class="col-lg-3">
-                <input type="text" class="form-control" id="rut_contacto" name="rut_contacto" readonly value="<%= rut_contacto%>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">ID proyecto</label>
-            <div class="col-lg-3">
-                <input type="text" readonly value="<%=id_proyecto%>" class="form-control" id="id_proyecto" name="id_proyecto" placeholder="Nombre">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Estado contacto</label>
-            <div class="col-lg-3">
+            <label>Estado contacto</label>
+            <div>
                 <select name="nuevo_estado" id="nuevo_estado">
                 <option value="Disponible">Disponible</option>
                 <option value="Encuesta finalizada">Encuesta finalizada</option>
@@ -101,8 +101,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Resultado de llamada</label>
-            <div class="col-lg-3">
+            <label >Resultado de llamada</label>
+            <div >
                 <select name="estado_llamada" id="estado_llamada">
                     <option value="Realizada">Realizada</option>
                     <option value="No se terminó">No se terminó</option>
@@ -114,14 +114,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default">Cancelar</button>
+            <div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="reset" class="btn btn-default">Cancelar</button>
             </div>
         </div>
     </fieldset>
 </form>
-
+</div>
+</div>
+</div>
 
 </body>
 </html>

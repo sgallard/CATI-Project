@@ -66,26 +66,68 @@
 <hr>
 <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
 
-<div align="middle">
-<div align="middle" style="width: 37.4%">
-    <div class="box" id="proyecto" style="background: #e8e8e3;padding-bottom: 5%;padding-top: 2%;border-radius: 1%">
-        <div class="box" id="hcustom" style="font-size: 35px; color: #292929;"> Contacto: <%= resultado.nombre%></div>
+<div align="left" style="padding-left: 1%">
+    <div align="middle" style="width: 16.05%; float:left; border-radius: 2%">
+        <div class="box" id="proyecto" style="background: #e8e8e3;border-radius: 1%; padding: 1%">
         <span style="color: #292929;">
-            <div align="left" style="padding-left: 50px; font-size: 20px">Número: <%= resultado.numero%></div>
-            <div align="left" style="padding-left: 50px; font-size: 20px">Rut: <%= resultado.rutcontacto%></div>
-            <div align="left" style="padding-left: 50px; font-size: 20px">Dirección: <%= resultado.direccion%></div>
+            <div align="left" style="font-size: 20px">Contacto: <%= contacto.nombre%></div>
+            <div align="left" style="font-size: 20px">Número: <%= contacto.numero%></div>
+            <div align="left" style="font-size: 20px">Rut: <%= contacto.rutcontacto%></div>
+            <div align="left" style="font-size: 20px">Dirección: <%= contacto.direccion%></div>
         </span>
-    </div>
+        </div>
+    <div style="width:auto;
+    height: 10%;
+    border: 1px solid #f7f7f7">
+    <form class="" action="/api/modificarestado/<%=proyecto.idproyecto%>/<%=contacto.rutcontacto%>" method="POST" enctype="application/x-www-form-urlencoded">
+            <fieldset>
 
-    <div id="llamar" style="float:left">
-        <a style="background-color: #12A5F4; border-color: #12A5F4" class="btn btn-lg btn-primary" href="skype:+569<%= resultado.numero%>?call">Llamar</a>
+                <div class="form-group">
+                    <label >Estado contacto</label>
+                    <div style="padding-left: 8%">
+                        <select name="nuevo_estado" id="nuevo_estado">
+                            <option value="Disponible">Disponible</option>
+                            <option value="Encuesta finalizada">Encuesta finalizada</option>
+                            <option value="Respuesta parcial de encuesta">Encuesta parcial</option>
+                            <option value="Decide no responder">Decide no responder</option>
+                            <option value="No contesta llamada">No contesta llamada</option>
+                            <option value="Error en la llamada">Error en la llamada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Resultado de llamada</label>
+                    <div >
+                        <select name="estado_llamada" id="estado_llamada">
+                            <option value="Realizada">Realizada</option>
+                            <option value="No se terminó">No se terminó</option>
+                            <option value="Se cortó el internet">Se cortó el internet</option>
+                            <option value="Contacto cortó la llamada">Contacto cortó la llamada</option>
+                            <option value="Se cayó el sistema">Se cayó el sistema</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-primary">Finalizar</button>
+                        <button type="reset" class="btn btn-default">Reiniciar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
     </div>
-    <div id="encuestar" style="float:left">
-        <a class="btn btn-lg btn-primary" href="/realizarencuesta/<%=proyecto.idproyecto%>/<%= resultado.rutcontacto%>">Realizar encuesta</a>
-    </div>
-    <div id="nuevocontacto" style="float: left">
-        <a class="btn btn-lg btn-primary" href="/nuevocontacto/<%=proyecto.idproyecto%>/<%= resultado.rutcontacto%>">Buscar nuevo contacto</a>
-    </div>
+        <div id="llamar" >
+            <a style="background-color: #12A5F4;
+            border-color: #12A5F4;"
+               class="btn btn-lg btn-primary" href="skype:+569<%= contacto.numero%>?call">Llamar</a>
+        </div>
+</div>
+</div>
+
+<div style="float: left;padding-left: 10px">
+<div align="middle">
+    <iframe style="width: 350%;height:500px" align="middle" src="<%=encuesta.url%>"></iframe>
 </div>
 </div>
 
