@@ -86,23 +86,37 @@
 </div>
 
 <hr>
-<body>
 
-<form class="form-horizontal" action="/audios" method="POST" enctype="application/x-www-form-urlencoded">
-    <fieldset>
-        <legend></legend>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Fecha</label>
-            <div class="col-lg-3">
-                <input type="text" class="form-control" id="fecha" name="fecha" >
-            </div>
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </div>
-        </div>
-    </fieldset>
-</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th> Nombre </th>
+        <th>        </th>
+        <!--<th> Descripcion </th>-->
+        <!--<th>  </th>-->
+        <!--<th>  </th>
+        <th>  </th>
+        <th>  </th>-->
+    </tr>
+    </thead>
+    <% for (var i= 0;i< ls.length;i++){ %>
+    <tbody>
+    <tr>
+        <td><%= ls[i] %></td>
+        <td>
+
+            <a href="/download/<%=ls[i]%>">      Descargar   </a>
+
+        </td>
+
+
+    </tr>
+    <% }%>
+    </tbody>
+
+</table>
+
+
 
 </body>
 </html>

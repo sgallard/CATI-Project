@@ -35,6 +35,35 @@ module.exports = function(app, passport) {
         res.render('loginencuestador.html', {message: req.flash('loginMessage')});
     });
 
+    app.get('/download/:id', function(req, res){
+
+        localizacion = __dirname;
+        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Audios/2016-11-29/');
+        var file = localizacion + req.params.id;
+        res.download(file); // Set disposition and send it.
+    });
+
+
+
+    app.get('/audios',isLoggedInAdmin,function (req,res) {
+        res.render('audios.html');
+    });
+    app.post('/audios',function (req,res) {
+        var fs = require('fs');
+
+        console.log(__dirname);
+
+        localizacion = __dirname;
+        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Audios/'+req.body.fecha+'/');
+        console.log(localizacion);
+        var files = fs.readdirSync(localizacion);
+        console.log(files);
+        res.render('audioslista.html',{ls: files});
+    });
+
+
+
+
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/api/verencuestadores', // redirect to the secure profile section
