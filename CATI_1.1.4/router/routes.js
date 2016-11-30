@@ -43,27 +43,25 @@ module.exports = function(app, passport) {
         res.download(file); // Set disposition and send it.
     });
 
-
-
     app.get('/audios',isLoggedInAdmin,function (req,res) {
-        res.render('audios.html');
-    });
+            res.render('audios.html',{message: ""});
+        });
+
     app.post('/audios',isLoggedInAdmin,function (req,res) {
-        var fs = require('fs');
-
-        console.log(__dirname);
-
-        localizacion = __dirname;
-        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Audios/'+req.body.fecha+'/');
-        console.log(localizacion);
-        var files = fs.readdirSync(localizacion);
-        console.log(files);
-        res.render('audioslista.html',{ls: files});
-    });
-
-
-
-
+            var fs = require('fs');
+            localizacion = __dirname;
+            localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Audios/'+req.body.fecha+'/');
+            var direc= 0;
+            if(req.body.fecha==""){
+                direc=1;
+            }
+            try{
+                var files = fs.readdirSync(localizacion);
+                res.render('audioslista.html',{ls: files, date: req.body.fecha, directorio: direc});
+            }catch (ex){
+                res.render('audios.html',{message:"No hay audios grabados para la fecha "+req.body.fecha});
+            }
+        });
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/api/verencuestadores', // redirect to the secure profile section
@@ -140,7 +138,6 @@ module.exports = function(app, passport) {
         res.redirect('/api/contactosproyectoencuestador/'+req.params.id+'');
     });
 
-
     app.get('/usuariorandom/:id', isLoggedInEncuestador  , function(req, res) {
         res.redirect('/api/usuariorandom/'+req.params.id+'');
     });
@@ -200,24 +197,20 @@ module.exports = function(app, passport) {
 };
 
 function isLoggedInAdmin(req, res, next) {
-    // if user is authenticated in the session, carry on
     if (req.user!=undefined) {
         if (req.user.usuarioadmin != undefined)
             return next();
     }
     console.log("falso admin");
-    // if they aren't redirect them to the home page
     res.redirect('/');
 }
 
 function isLoggedInEncuestador(req, res, next) {
-    // if user is authenticated in the session, carry on
     if (req.user!=undefined) {
         if (req.user.usuarioencuestador != undefined)
             return next();
         console.log("falso encuestador");
     }
-    // if they aren't redirect them to the home page
     res.redirect('/');
 }
 
