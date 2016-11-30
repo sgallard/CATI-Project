@@ -128,7 +128,7 @@ router.get('/realizarencuesta/:id_p/:id_c', function(req,res,next){
 						idproyecto: req.params.id_p
 					}
 				}).then(function (ENC) {
-					res.render('responder_encuesta.html', {contacto: contact, proyecto: proyect, encuesta : ENC[0]});
+					res.render('responder_encuesta.html', {contacto: contact, proyecto: proyect, encuesta : ENC[0],nombre: req.user.nombre});
 				})
 			});
 
@@ -150,7 +150,7 @@ router.get('/nuevocontacto/:id_p/:id_c', function(req,res,next){
 					idproyecto: req.params.id_p
 				}
 			}).then(function (proyect)
-				{res.render('modificarestado.html', {contacto: contact, proyecto: proyect});
+				{res.render('modificarestado.html', {contacto: contact, proyecto: proyect,nombre: req.user.nombre});
 			});
 		});
 	} catch (ex) {
@@ -178,7 +178,7 @@ router.get('/usuariorandom/:id', function (req, res, next) {
 							idproyecto: req.params.id
 						}
 					}).then(function (proyect) {
-						res.render('vercontacto_encuestador.html', {resultado: contacto, proyecto: proyect});
+						res.render('vercontacto_encuestador.html', {resultado: contacto, proyecto: proyect,nombre: req.user.nombre});
 					})
 				});
 			}
@@ -227,7 +227,8 @@ router.get('/verproyectos', function (req, res, next) {
 			if (req.user.usuarioadmin!=undefined){
 				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});}
 			else if(req.user.usuarioencuestador!=undefined){
-				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: ""});
+				console.log(req);
+				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: "",nombre: req.user.nombre});
 			}
 		});
 	} catch (ex) {
