@@ -137,7 +137,9 @@ router.get('/usuariorandom/:id', function (req, res, next) {
 				});
 			}
 			else{
-				res.redirect('/api/verproyectos');
+				models.proyecto.findAll().then(function (user) {
+					res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: "El proyecto seleccionado no tiene contactos por llamar"});
+				});
 			}
 		});
 	} catch (ex) {
@@ -189,30 +191,17 @@ router.get('/verllamadas/:id', function (req, res, next) {
 	} catch (ex) {
 		console.log("Id incorrecto.");
 	}
-})
-
-
-
-
+});
 
 router.get('/verproyectos', function (req, res, next) {
 	try {
-		/*var query = url.parse(req.url,true).query;
-		 console.log(query);*/
 		models.proyecto.findAll().then(function (user) {
-			//for(var x=0;x<user.length;x++){
-			//console.log(user[x].username);
 			if (req.user.usuarioadmin!=undefined){
 				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});}
 			else if(req.user.usuarioencuestador!=undefined){
-				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user});
-
+				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: ""});
 			}
-
-			//res.json(user);
-			//}
 		});
-		//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
 	} catch (ex) {
 		console.error("Internal error:" + ex);
 		return next(ex);
@@ -334,26 +323,14 @@ router.post('/calificacion/:id/:ide',function(req,res,next){
 
 });
 
-
-
-
-
 router.post('/crearllamada/:id/:idp',function(req,res,next){
 	try {
 		models.llamada.create({
 			usuarioencuestador: req.user.usuarioencuestador,
 			rutcontacto: req.params.id,
-			duracion: req.body.duracion,
-			estado: req.body.estado,
-			id_grabacion: req.body.id_grabacion
+			estado: req.body.estado
 		});
-		/*.then(function (result) {
-		 models.Rol.create({
-		 permiso: req.body.permiso,
-		 UsuarioId: result.id
-		 }); }); */
 		res.redirect("/vercontactosproyectoencuestador/"+req.params.idp);
-
 	}
 	catch (ex) {
 		console.error("Internal error:" + ex);

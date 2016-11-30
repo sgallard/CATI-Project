@@ -77,7 +77,7 @@ module.exports = function(app, passport) {
         archivoContactos = req.files.archivox;
         console.log(archivoContactos.name);
         localizacion = __dirname;
-        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/');
+        localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Contactos/');
         console.log(__dirname);
         console.log(localizacion);
         connection.connect();

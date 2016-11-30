@@ -12,23 +12,14 @@ module.exports = function(sequelize, DataTypes) {
     calificacion = sequelize.define("calificacion", {
 
         nota: DataTypes.INTEGER
-    }, {        timestamps:false,
-
+    }, {timestamps:true,
+        updatedAt: false,
         classMethods: {
             associate: function (models) {
-                calificacion.belongsTo(models.llamada, {
+                calificacion.belongsTo(models.encuestador, {
                     onDelete: "CASCADE",
                     foreignKey: {
-
-                        name:"id",
-                        allowNull: false
-                    }
-                });
-
-                calificacion.belongsTo(models.administrador, {
-                    onDelete: "CASCADE",
-                    foreignKey: {
-                        name:"usuarioadmin",
+                        name:"usuarioencuestador",
                         allowNull: false
                     }
                 });

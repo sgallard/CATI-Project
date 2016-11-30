@@ -23,11 +23,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="verllamadas.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/verllamadas.html">
+      <file leaf-file-name="calificacion.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/calificacion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+            <state relative-caret-position="147">
+              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vercontacto_encuestador.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/vercontacto_encuestador.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="95" column="65" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
+              <folding>
+                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#a#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1480465084934" expanded="true" signature="1181:1253" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="administrador.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/administrador.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -36,50 +62,100 @@
       <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/router/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="337" column="0" selection-start-line="337" selection-start-column="0" selection-end-line="337" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="332" column="73" selection-start-line="332" selection-start-column="73" selection-end-line="332" selection-end-column="73" />
               <folding>
                 <element signature="e#618#950#0" expanded="false" />
+                <element signature="e#1016#1358#0" expanded="false" />
                 <element signature="e#1430#1682#0" expanded="false" />
                 <element signature="e#1754#2004#0" expanded="false" />
                 <element signature="e#2082#2398#0" expanded="false" />
-                <element signature="e#7293#7835#0" expanded="false" />
-                <element signature="e#7902#8398#0" expanded="false" />
-                <element signature="e#8457#8890#0" expanded="false" />
-                <element signature="e#8947#9589#0" expanded="false" />
-                <element signature="e#9659#10214#0" expanded="false" />
-                <element signature="e#10275#10700#0" expanded="false" />
-                <element signature="e#10768#11315#0" expanded="false" />
-                <element signature="e#11249#11313#0" expanded="false" />
-                <element signature="e#11387#11727#0" expanded="false" />
-                <element signature="e#11793#12156#0" expanded="false" />
+                <element signature="e#2472#2742#0" expanded="false" />
+                <element signature="e#2805#3741#0" expanded="false" />
+                <element signature="e#3803#4190#0" expanded="false" />
+                <element signature="e#4251#4805#0" expanded="false" />
+                <element signature="e#4863#5299#0" expanded="false" />
+                <element signature="e#5360#5608#0" expanded="false" />
+                <element signature="e#5665#6016#0" expanded="false" />
+                <element signature="e#6109#6391#0" expanded="false" />
+                <element signature="e#6452#6683#0" expanded="false" />
+                <element signature="e#6767#7185#0" expanded="false" />
+                <element signature="e#7249#7791#0" expanded="false" />
+                <element signature="e#8215#8648#0" expanded="false" />
+                <element signature="e#8705#9347#0" expanded="false" />
+                <element signature="e#9417#9972#0" expanded="false" />
+                <element signature="e#10033#10458#0" expanded="false" />
+                <element signature="e#10526#11073#0" expanded="false" />
+                <element signature="e#11007#11071#0" expanded="false" />
+                <element signature="e#11145#11485#0" expanded="false" />
+                <element signature="e#11551#11914#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="encuestador.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/encuestador.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/router/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="794">
-              <caret line="119" column="7" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
+            <state relative-caret-position="152">
+              <caret line="79" column="84" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="84" />
               <folding>
-                <element signature="e#2508#4086#0" expanded="false" />
+                <element signature="e#266#330#0" expanded="false" />
+                <element signature="e#405#589#0" expanded="false" />
+                <element signature="e#640#970#0" expanded="false" />
+                <element signature="e#1218#1377#0" expanded="false" />
+                <element signature="e#1442#1687#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="encuestador.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/encuestador.html">
+      <file leaf-file-name="llamada.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/llamada.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proyecto_contacto.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/proyecto_contacto.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="18" column="41" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vercontactosproyecto.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/vercontactosproyecto.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="verllamadas.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/verllamadas.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,7 +185,6 @@
         <option value="$PROJECT_DIR$/models/encuesta}.js" />
         <option value="$PROJECT_DIR$/models/contacto.js" />
         <option value="$PROJECT_DIR$/models/respuesta.js" />
-        <option value="$PROJECT_DIR$/models/administrador.js" />
         <option value="$PROJECT_DIR$/models/pregunta.js" />
         <option value="$PROJECT_DIR$/views/VerUsuario.html" />
         <option value="$PROJECT_DIR$/views/login.html" />
@@ -132,20 +207,21 @@
         <option value="$PROJECT_DIR$/views/cargarcontactos.html" />
         <option value="$PROJECT_DIR$/views/verproyectos.html" />
         <option value="$PROJECT_DIR$/views/verencuestadores.html" />
-        <option value="$PROJECT_DIR$/views/verproyectosencuestador.html" />
         <option value="$PROJECT_DIR$/models/proyecto_contacto.js" />
         <option value="$PROJECT_DIR$/views/vercontactosproyecto.html" />
         <option value="$PROJECT_DIR$/models/encuesta.js" />
         <option value="$PROJECT_DIR$/views/cargarencuesta.html" />
         <option value="$PROJECT_DIR$/views/proyecto.html" />
-        <option value="$PROJECT_DIR$/models/llamada.js" />
         <option value="$PROJECT_DIR$/views/encuestador.html" />
-        <option value="$PROJECT_DIR$/models/calificacion.js" />
-        <option value="$PROJECT_DIR$/models/encuestador.js" />
-        <option value="$PROJECT_DIR$/router/routes.js" />
-        <option value="$PROJECT_DIR$/views/vercontacto_encuestador.html" />
+        <option value="$PROJECT_DIR$/views/verproyectosencuestador.html" />
         <option value="$PROJECT_DIR$/router/api.js" />
+        <option value="$PROJECT_DIR$/views/vercontacto_encuestador.html" />
         <option value="$PROJECT_DIR$/views/verllamadas.html" />
+        <option value="$PROJECT_DIR$/models/encuestador.js" />
+        <option value="$PROJECT_DIR$/models/llamada.js" />
+        <option value="$PROJECT_DIR$/models/calificacion.js" />
+        <option value="$PROJECT_DIR$/models/administrador.js" />
+        <option value="$PROJECT_DIR$/router/routes.js" />
       </list>
     </option>
   </component>
@@ -193,7 +269,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -222,59 +297,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CATI_1.1.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CATI_1.1.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="router" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CATI_1.1.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CATI_1.1.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CATI_1.1.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CATI_1.1.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Ayudantia 1-plantilla/app.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
@@ -285,7 +319,7 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager" selected="Node.js.app.js">
-    <configuration default="false" name="app.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="app.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v6.5.0/bin/node" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
       <profiling v8-profiler-path="" />
       <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
         <profiling v8-profiler-path="" />
@@ -408,11 +442,12 @@
       <workItem from="1480374699132" duration="6064000" />
       <workItem from="1480383190277" duration="23785000" />
       <workItem from="1480460990552" duration="1339000" />
+      <workItem from="1480463890062" duration="2729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="286719000" />
+    <option name="totallyTimeSpent" value="289464000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -425,13 +460,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22828594" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.50269026" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.266766" sideWeight="0.49730977" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.266766" sideWeight="0.49730977" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -458,7 +493,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -521,8 +556,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/loginencuestador.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="435">
           <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -572,13 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="80" column="10" selection-start-line="80" selection-start-column="10" selection-end-line="80" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/proyecto_contacto.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -678,16 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/vercontactosproyecto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -698,108 +717,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/verproyectosencuestador.html">
+    <entry file="file://$PROJECT_DIR$/views/encuestador.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+        <state relative-caret-position="361">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
+        <state relative-caret-position="462">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/encuestador.html">
+    <entry file="file://$PROJECT_DIR$/views/verproyectosencuestador.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+        <state relative-caret-position="108">
+          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
           <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#span#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/calificacion.js">
+    <entry file="file://$PROJECT_DIR$/views/vercontactosproyecto.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/encuestador.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/administrador.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/llamada.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/vercontacto_encuestador.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
-          <folding>
-            <element signature="n#style#0;n#h1#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="199">
+          <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/router/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="337" column="0" selection-start-line="337" selection-start-column="0" selection-end-line="337" selection-end-column="0" />
+        <state relative-caret-position="230">
+          <caret line="332" column="73" selection-start-line="332" selection-start-column="73" selection-end-line="332" selection-end-column="73" />
           <folding>
             <element signature="e#618#950#0" expanded="false" />
+            <element signature="e#1016#1358#0" expanded="false" />
             <element signature="e#1430#1682#0" expanded="false" />
             <element signature="e#1754#2004#0" expanded="false" />
             <element signature="e#2082#2398#0" expanded="false" />
-            <element signature="e#7293#7835#0" expanded="false" />
-            <element signature="e#7902#8398#0" expanded="false" />
-            <element signature="e#8457#8890#0" expanded="false" />
-            <element signature="e#8947#9589#0" expanded="false" />
-            <element signature="e#9659#10214#0" expanded="false" />
-            <element signature="e#10275#10700#0" expanded="false" />
-            <element signature="e#10768#11315#0" expanded="false" />
-            <element signature="e#11249#11313#0" expanded="false" />
-            <element signature="e#11387#11727#0" expanded="false" />
-            <element signature="e#11793#12156#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/router/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="119" column="7" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
-          <folding>
-            <element signature="e#2508#4086#0" expanded="false" />
+            <element signature="e#2472#2742#0" expanded="false" />
+            <element signature="e#2805#3741#0" expanded="false" />
+            <element signature="e#3803#4190#0" expanded="false" />
+            <element signature="e#4251#4805#0" expanded="false" />
+            <element signature="e#4863#5299#0" expanded="false" />
+            <element signature="e#5360#5608#0" expanded="false" />
+            <element signature="e#5665#6016#0" expanded="false" />
+            <element signature="e#6109#6391#0" expanded="false" />
+            <element signature="e#6452#6683#0" expanded="false" />
+            <element signature="e#6767#7185#0" expanded="false" />
+            <element signature="e#7249#7791#0" expanded="false" />
+            <element signature="e#8215#8648#0" expanded="false" />
+            <element signature="e#8705#9347#0" expanded="false" />
+            <element signature="e#9417#9972#0" expanded="false" />
+            <element signature="e#10033#10458#0" expanded="false" />
+            <element signature="e#10526#11073#0" expanded="false" />
+            <element signature="e#11007#11071#0" expanded="false" />
+            <element signature="e#11145#11485#0" expanded="false" />
+            <element signature="e#11551#11914#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/verllamadas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+        <state relative-caret-position="229">
+          <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/proyecto_contacto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/encuestador.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/llamada.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/calificacion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/administrador.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/vercontacto_encuestador.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="95" column="65" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
+          <folding>
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1480465084934" expanded="true" signature="1181:1253" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="79" column="84" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="84" />
+          <folding>
+            <element signature="e#266#330#0" expanded="false" />
+            <element signature="e#405#589#0" expanded="false" />
+            <element signature="e#640#970#0" expanded="false" />
+            <element signature="e#1218#1377#0" expanded="false" />
+            <element signature="e#1442#1687#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

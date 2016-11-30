@@ -17,15 +17,7 @@ module.exports = function(sequelize, DataTypes) {
         nombre: DataTypes.STRING,
         contrasena: DataTypes.STRING
     }, {
-        timestamps:false,
-        classMethods: {
-            associate: function(models) {
-                administrador.hasMany(models.calificacion,  { foreignKey: {
-                    name: 'usuarioadmin',
-                    allowNull: false
-                } })
-            }
-        }
+        timestamps:false
     });
     return administrador;
 };

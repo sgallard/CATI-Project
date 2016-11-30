@@ -65,10 +65,16 @@
 </nav>
 
 
-<div>
-    <h1> &#9658Proyectos</h1>
-</div>
-<hr>
+<h1 style="float:left"> &#9658Proyectos</h1>
+<span>
+
+    <% if (message.length > 0) { %>
+    <div align = "middle">
+    <div style="width: 33%" align="middle" class="alert alert-danger"><%= message %></div>
+    </div>
+    <% } %>
+</span>
+<hr style="clear : both">
 
 <% for (var i= 0;i< resultado.length;i++){%>
 <div align="middle" style="padding-left: 10px; width: 33%; padding-top: 10px; float: left;">

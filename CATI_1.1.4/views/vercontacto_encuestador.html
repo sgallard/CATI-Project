@@ -88,27 +88,14 @@
 <form class="form-horizontal" action="/api/crearllamada/<%= resultado.rutcontacto%>/<%=proyecto.idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
     <fieldset>
         <div class="form-group">
-            <label class="col-lg-2 control-label">Duracion</label>
-            <div class="col-lg-3">
-                <input type="text" class="form-control" id="duracion" name="duracion" >
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">ID grabacion </label>
-            <div class="col-lg-3">
-                <input type="number" readonly value=1 class="form-control" id="id_grabacion" name="id_grabacion" placeholder="Nombre">
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-lg-2 control-label">Resultado de llamada</label>
             <div class="col-lg-3">
-                <select name="nuevo_estado" id="nuevo_estado">
+                <select name="estado" id="estado">
                     <option value="Realizada">Realizada</option>
-                    <option value="No se termino">No se termino</option>
-                    <option value="Se corto el internet">Se corto el internet</option>
-                    <option value="Contacto corto la llamada">Contacto corto la llamada</option>
-                    <option value="Se casho el sistema">Se casho el sistema</option>
-                    <option value="everytime">everytime you fail you lose 10 years of life</option>
+                    <option value="No se terminó">No se terminó</option>
+                    <option value="Se cortó el internet">Se cortó el internet</option>
+                    <option value="Contacto cortó la llamada">Contacto cortó la llamada</option>
+                    <option value="Se cayó el sistema">Se cayó el sistema</option>
                 </select>
             </div>
         </div>
