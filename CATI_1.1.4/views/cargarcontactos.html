@@ -7,7 +7,7 @@
     <!-- Bootstrap -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/sandstone/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -81,11 +81,15 @@
     </div>
 </nav>
     <body>
-        <h1>Cargar archivos para proyecto <%=idproyecto%></h1>
-        <hr>
+
+    <h1>&#9658<a href="/verproyectos" style="text-decoration: none; color : #292929">Proyectos</a>
+        &#9658<a href="/verproyecto/<%= proyecto.idproyecto%>" style="text-decoration: none; color : #292929"><%=proyecto.nombre%> </a>
+        &#9658 Cargar contactos</h1>
+
+    <hr>
     <div class="container">
         <div class="col-sm-6 col-sm-offset-3">
-        <form action="/cargarcontactos/<%=idproyecto%>" method="post" encType="multipart/form-data">
+        <form action="/cargarcontactos/<%=proyecto.idproyecto%>" method="post" encType="multipart/form-data">
             <input type="file" class="form-control" name="archivox" accept=".csv" />
             <button type="submit" class="btn btn-primary btn-large">Cargar</button>
         </form>

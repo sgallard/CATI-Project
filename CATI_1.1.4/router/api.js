@@ -35,39 +35,37 @@ router.get('/contactos', function (req, res, next) {
 			return next(ex);
 		}
 	});
-router.get('/contactosproyecto/:id', function (req, res, next) {
-		/*var query = url.parse(req.url,true).query;
-		 console.log(query);*/
-		try {
-			models.proyecto_contacto.findAll({
-				where: {
-					idproyecto: req.params.id
-				}
-			}).then(function (user) {
-				res.render('vercontactosproyecto.html', {resultado:user,id:req.params.id});
-			});
-		} catch (ex) {
-			console.log("Id incorrecto.");
-		}
-});
 
 router.get('/cargarencuestaproyecto/:id', function (req, res, next) {
 	try {
-		//console.log(req);
 		models.proyecto.findOne(({
 			where: {
 				idproyecto: req.params.id
 			}
 		})).then(function (user) {
-			res.render('cargarencuesta.html', {resultado: user});
+			res.render('cargarencuesta.html', {proyecto: user});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
 	}
 });
+
+router.get('/cargarcontactos/:id', function (req, res, next) {
+	try {
+		models.proyecto.findOne(({
+			where: {
+				idproyecto: req.params.id
+			}
+		})).then(function (proyect) {
+			res.render('cargarcontactos.html', {proyecto: proyect});
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
+
 router.post('/cargarencuestaproyecto/:id', function (req, res, next) {
 	try {
-		console.log("Ayyyylmao")
 		models.encuesta.create({
 			url: req.body.URL,
 			idproyecto: req.body.id_p
@@ -184,7 +182,7 @@ router.get('/usuariorandom/:id', function (req, res, next) {
 			}
 			else{
 				models.proyecto.findAll().then(function (user) {
-					res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: "El proyecto seleccionado no tiene contactos por llamar"});
+					res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user,nombre: req.user.nombre, message: "El proyecto seleccionado no tiene contactos por llamar", });
 				});
 			}
 		});
@@ -242,8 +240,13 @@ router.get('/encuestador/:id', function (req, res, next) {
 				where: {
 					usuarioencuestador: req.params.id
 				}
-			}).then(function (user) {
-				res.render('encuestador.html', {resultado: user});
+			}).then(function (user) {models.llamada.findAll({
+				where: {
+					usuarioencuestador: req.params.id
+				}
+			}).then(function (call) {
+				res.render('encuestador.html', {resultado: user, llamada: call});
+			});
 			});
 		} catch (ex) {
 			console.log("Id incorrecto.");
@@ -256,18 +259,39 @@ router.get('/proyecto/:id', function (req, res, next) {
 				idproyecto: req.params.id
 			}
 		}).then(function (user){
-			models.encuesta.findOne({
+			models.encuesta.findAll({
 				where: {
 					idproyecto: req.params.id
 				}
 			}).then(function (ENC){
-				res.render('proyecto.html', {resultado: user, r_encuesta: ENC});
-			})
+				models.proyecto_contacto.findAll({
+					where: {
+						idproyecto: req.params.id
+					}
+				}).then(function(contact){
+				res.render('proyecto.html', {resultado: user, r_encuesta: ENC, contacto:contact});
+				});
+			});
 		});
 	} catch (ex) {
 		console.log("Id incorrecto.");
 	}
 });
+
+router.get('/contactosproyecto/:id', function (req, res, next) {
+	try {
+		models.proyecto_contacto.findAll({
+			where: {
+				idproyecto: req.params.id
+			}
+		}).then(function (user) {
+			res.render('vercontactosproyecto.html', {resultado:user,id:req.params.id});
+		});
+	} catch (ex) {
+		console.log("Id incorrecto.");
+	}
+});
+
 //GET un usuario con id determinado
 router.get('/usuarios/:id', function (req, res, next) {
 		try {

@@ -13,9 +13,8 @@ module.exports = function(app, passport) {
         res.render('index.html', {title: 'CATI Beta '});
     });
 
-    app.get('/cargarcontactos/:id', isLoggedInAdmin, function (req, res) {
-        // render the page and pass in any flash data if it exists
-        res.render('cargarcontactos.html', {message: req.flash('loginMessage'), idproyecto: req.params.id});
+    app.get('/cargarcontactos/:id', isLoggedInAdmin  , function(req, res) {
+        res.redirect('/api/cargarcontactos/'+req.params.id+'');
     });
 
     app.get('/encuestador', function (req, res) {
@@ -96,7 +95,7 @@ module.exports = function(app, passport) {
         var archivoContactos;
         var fs;
         var localizacion;
-
+        try{
         if (!req.files) {
             res.send('No files were uploaded.');
             return;
@@ -105,9 +104,8 @@ module.exports = function(app, passport) {
         console.log(archivoContactos.name);
         localizacion = __dirname;
         localizacion = localizacion.replace('CATI_1.1.4/router', 'Archivos/Contactos/');
-        console.log(__dirname);
-        console.log(localizacion);
         connection.connect();
+        try{
         connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS ;", function (err) {
             if (!err) {
                 console.log('All good.');
@@ -116,7 +114,11 @@ module.exports = function(app, passport) {
                 console.log('Error while performing Query.');
                 res.send('Error al subir archivo.');
             }
-        });
+        });}
+        catch (exx){
+            console.log("Catch exx");
+            res.redirect('/api/proyecto/' + req.params.id + '');
+        }
         connection.query("LOAD DATA LOCAL INFILE '" + localizacion + archivoContactos.name + "' INTO TABLE proyecto_contacto FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS  (@col1,@col2,@col3,@col4)  set   `estado` = 'Disponible' , `rutcontacto` = @col1 , `idproyecto` = '" + req.params.id + "'", function (err) {
             if (!err) {
                 console.log('All good.');
@@ -128,6 +130,11 @@ module.exports = function(app, passport) {
         });
         connection.end();
         res.redirect('/api/proyecto/' + req.params.id + '');
+        }
+        catch (ex){
+            console.log("No funca");
+            res.redirect('/api/proyecto/' + req.params.id + '');
+        }
     });
 
     app.get('/realizarencuesta/:id_p/:id_c', isLoggedInEncuestador  , function(req, res) {

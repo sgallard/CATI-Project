@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sistema CATI 1.1.4</title>
+    <title>CATI</title>
 
     <!-- Bootstrap -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/sandstone/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,9 +18,6 @@
     <script  src="/node_modules/angular/angular.js"></script>
     <script  src="/node_modules/angular/angular.min.js"></script>
     <script src="/controllers/encuestadores.js"></script>
-    <style>
-        div#modificar   { padding-left:20px; float: left; }
-    </style>
 </head>
 <body>
 
@@ -38,6 +35,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
@@ -58,16 +56,16 @@
                         </ul>
                     </li>
                 </ul>
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-                    <!--  <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="/cargarcontactos">Cargar contactos</a></li>
-                            <li><a href="/vercontactos">Ver contactos</a></li>
-                          </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Audios <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/audios">Ver archivos</a></li>
+                            </ul>
                         </li>
-                      </ul> -->
+                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -83,28 +81,60 @@
         </div>
     </div>
 </nav>
+<h1> &#9658<a href="/verencuestadores" style="text-decoration: none; color : #292929">Encuestadores</a>&#9658<%=resultado[0].usuarioencuestador%>  </h1>
 
-<h1 style="padding-left:10px">Encuestador: <%= resultado[0].usuarioencuestador %></h1>
 <hr>
-<div style="padding-left:20px">
-    <h3>Nombre: <%= resultado[0].nombre %></h3>
-    <h3>Contraseña: <%= resultado[0].contrasena %></h3>
-</div>
-<div id="modificar">
-    <a class="btn btn-lg btn-primary" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Modificar</a>
-</div>
-<div id="llamadas">
-    <a class="btn btn-lg btn-primary" href="/verllamadas/<%= resultado[0].usuarioencuestador%>">Ver llamadas</a>
-</div>
-<div id="eliminar">
-    <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
-        <div class="form-group">
-            <div class="col-lg-3">
-                <button type="submit" class="btn btn-lg" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
-                </button>
-            </div>
+<h3> &#9658 Información</h3>
+<div align="middle">
+    <div align="middle" style="width: 31.8%">
+        <div class="box" id="encuestador" style="background: #e8e8e3;padding-bottom: 5%;padding-top: 2%;border-radius: 1%">
+            <span style="color: #292929;">
+            <div align="left" style="padding-left: 30px; font-size: 30px">Nombre: <%= resultado[0].nombre%></div>
+                <div align="left" style="padding-left: 30px; font-size: 30px">Contraseña: <%= resultado[0].contrasena%></div>
+            </span>
         </div>
-    </form>
+        <div id="modificar" style="float:left">
+            <a class="btn btn-lg btn-primary" href="/modificarencuestador/<%= resultado[0].usuarioencuestador%>">Editar datos</a>
+        </div>
+        <div id="eliminar" style="float: left">
+            <form class="form-horizontal" action="/api/eliminarencuestador/<%= resultado[0].usuarioencuestador%>" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <div class="col-lg-3">
+                        <button type="submit" class="btn btn-danger btn-lg" id="usuarioencuestador" name="usuarioencuestador" placeholder="usuarioencuestador">Eliminar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+<hr style="clear: both;">
+<h3> &#9658 Llamadas</h3>
+<%if(llamada.length!=0){%>
+<table class="table">
+
+    <thead>
+    <tr>
+        <th> Rut contacto llamado </th>
+        <th> Fecha</th>
+        <th> Estado de llamada </th>
+
+    </tr>
+    </thead>
+    <% for (var i= 0;i< llamada.length;i++){ %>
+    <tbody>
+    <tr>
+        <td><%= llamada[i].rutcontacto%></td>
+        <td><%= llamada[i].createdAt%></td>
+        <td><%= llamada[i].estado%></td>
+    </tr>
+    <% }%>
+    </tbody>
+</table>
+<%}else{%>
+<div style="padding-left: 10px ;color:#ff4d4d"> El encuestador no ha realizado llamadas.</div>
+<%}%>
+
 </body>
 </html>

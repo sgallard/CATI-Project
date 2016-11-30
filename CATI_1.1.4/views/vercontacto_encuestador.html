@@ -67,7 +67,7 @@
 <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
 
 <div align="middle">
-<div align="middle" style="width: 37.4%">
+<div align="middle" style="width: 36.3%">
     <div class="box" id="proyecto" style="background: #e8e8e3;padding-bottom: 5%;padding-top: 2%;border-radius: 1%">
         <div class="box" id="hcustom" style="font-size: 35px; color: #292929;"> Contacto: <%= resultado.nombre%></div>
         <span style="color: #292929;">
@@ -78,7 +78,7 @@
     </div>
 
     <div id="llamar" style="float:left">
-        <a style="background-color: #12A5F4; border-color: #12A5F4" class="btn btn-lg btn-primary" href="skype:+569<%= resultado.numero%>?call">Llamar</a>
+        <a  class="btn btn-lg btn-info" href="skype:+569<%= resultado.numero%>?call">Llamar</a>
     </div>
     <div id="encuestar" style="float:left">
         <a class="btn btn-lg btn-primary" href="/realizarencuesta/<%=proyecto.idproyecto%>/<%= resultado.rutcontacto%>">Realizar encuesta</a>
@@ -89,7 +89,7 @@
 </div>
 </div>
 
-<br style="clear:both"></br>
+<br style="clear:both">
 
 </body>
 </html>

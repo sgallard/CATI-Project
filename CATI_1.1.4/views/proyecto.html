@@ -7,7 +7,7 @@
     <!-- Bootstrap -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/sandstone/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,10 +18,7 @@
     <script  src="/node_modules/angular/angular.js"></script>
     <script  src="/node_modules/angular/angular.min.js"></script>
     <script src="/controllers/encuestadores.js"></script>
-    <style>
-        div#modificar   { padding-left:20px; float: left; }
-    </style>
-</head>
+    </head>
 <body ng-app="Cati"  ng-controller="encuestadores">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -37,6 +34,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
@@ -57,16 +55,16 @@
                         </ul>
                     </li>
                 </ul>
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-                    <!--  <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="/cargarcontactos">Cargar contactos</a></li>
-                            <li><a href="/vercontactos">Ver contactos</a></li>
-                          </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Audios <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/audios">Ver archivos</a></li>
+                            </ul>
                         </li>
-                      </ul> -->
+                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -83,39 +81,92 @@
     </div>
 </nav>
 
-<h1 style="padding-left:10px">Proyecto: <%= resultado.nombre%></h1>
+<h1> &#9658<a href="/verproyectos" style="text-decoration: none; color : #292929">Proyectos</a> &#9658<%=resultado.nombre%>  </h1>
+
 <hr>
-<div style="padding-left:20px">
-    <h3>Id proyecto: <%= resultado.idproyecto%></h3>
-    <h3>Descripción: <%= resultado.descripcion%>%></h3>
-</div>
-<br>
-<div id="modificar" class="col-lg-2">
-<a class="btn btn-primary" style="clear:both" href="/cargarcontactos/<%= resultado.idproyecto%>">   Cargar contactos     </a>
-</div>
-<div class="col-lg-2">
-    <a class="btn btn-primary" href="/vercontactosproyecto/<%= resultado.idproyecto%>">   Lista de contactos      </a>
-</div>
-<div class="col-lg-1">
-    <a class="btn btn-primary" href="/cargarencuestaproyecto/<%= resultado.idproyecto%>"> Cargar encuesta </a>
-</div>
-<br style="clear:both">
-<hr>
+<h3> &#9658 Información</h3>
+
+
 
 <div align="middle">
-</div>
+    <div align="middle" style="width: 44.6%">
+        <div class="box" id="proyecto" style="background: #e8e8e3;padding-bottom: 5%;padding-top: 2%;border-radius: 1%">
+            <div class="box" id="hcustom" style="font-size: 35px; color: #292929;"> Nombre: <%= resultado.nombre%></div>
+            <span style="color: #292929;">
+            <div align="left" style="padding-left: 30px; font-size: 20px">ID: <%= resultado.idproyecto%></div>
+            <div align="left" style="padding-left: 30px; font-size: 20px">Descripción: <%= resultado.descripcion%></div>
+            </span>
+        </div>
 
-<div id="modificar">
-    <a class="btn btn-lg btn-primary" href="/modificarproyecto/<%= resultado.idproyecto%>">Modificar</a>
-</div>
-<form class="form-horizontal" action="/api/eliminarproyecto/<%= resultado.idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
-    <div class="form-group">
-        <div class="col-lg-3">
-            <button type="submit" class="btn btn-lg"  id="idproyecto" name="idproyecto" placeholder="IDdproyecto">Eliminar
-            </button>
+        <div id="cargar_c" style="float:left">
+            <a class="btn btn-lg btn-primary" href="/cargarcontactos/<%= resultado.idproyecto%>">Cargar contactos</a>
+        </div>
+        <div id="cargar_e" style="float:left">
+            <a class="btn btn-lg btn-primary" href="/cargarencuestaproyecto/<%= resultado.idproyecto%>"> Cargar encuesta </a>
+        </div>
+        <div id="modificar" style="float:left">
+            <a class="btn btn-lg btn-primary" href="/modificarproyecto/<%= resultado.idproyecto%>">Editar datos</a>
+        </div>
+        <div id="eliminar" style="float:left">
+            <form class="form-horizontal" action="/api/eliminarproyecto/<%= resultado.idproyecto%>" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <div class="col-lg-3">
+                        <button  type="submit" class="btn btn-danger btn-lg"  id="idproyecto" name="idproyecto" placeholder="IDdproyecto">Eliminar
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
+</div>
+<hr style="clear:both">
+<h3> &#9658 Encuestas</h3>
+<%if(r_encuesta.length==0){%>
+<div style="padding-left: 10px ;color:#ff4d4d"> El proyecto no tiene encuestas; presione el botón CARGAR ENCUESTA y
+    escriba el link de la encuesta a cargar.</div>
+<%}else{%>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> URL </th>
+    </tr>
+    </thead>
+    <% for (var i= 0;i< r_encuesta.length;i++){ %>
+    <tbody>
+    <tr>
+        <td><a href="<%= r_encuesta[i].url%>">
+            <%= r_encuesta[i].url%></a></td>
+    </tr>
+    <% }%>
+    </tbody>
+</table>
+<%}%>
+
+<hr>
+<h3> &#9658 Contactos</h3>
+<%if(contacto.length==0){%>
+<div style="padding-left: 10px ;color:#ff4d4d"> El proyecto no tiene contactos; presione el botón CARGAR CONTACTOS para seleccionar
+un archivo a cargar.</div>
+    <%}else{%>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> Rut </th>
+        <th> Estado </th>
+    </tr>
+    </thead>
+    <% for (var i= 0;i< contacto.length;i++){ %>
+    <tbody>
+    <tr>
+        <td><%= contacto[i].rutcontacto%></td>
+        <td><%= contacto[i].estado%></td>
+    </tr>
+    <% }%>
+    </tbody>
+</table>
+<%}%>
 
 </body>
 </html>
