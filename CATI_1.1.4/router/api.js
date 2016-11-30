@@ -227,7 +227,6 @@ router.get('/verproyectos', function (req, res, next) {
 			if (req.user.usuarioadmin!=undefined){
 				res.render('verproyectos.html', {title: 'Listar proyectos', resultado: user});}
 			else if(req.user.usuarioencuestador!=undefined){
-				console.log(req);
 				res.render('verproyectosencuestador.html', {title: 'Listar proyectos', resultado: user, message: "",nombre: req.user.nombre});
 			}
 		});
