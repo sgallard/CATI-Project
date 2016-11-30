@@ -35,7 +35,7 @@ module.exports = function(app, passport) {
         res.render('loginencuestador.html', {message: req.flash('loginMessage')});
     });
 
-    app.get('/download/:id', function(req, res){
+    app.get('/download/:id',isLoggedInAdmin, function(req, res){
 
         localizacion = __dirname;
         localizacion = localizacion.replace('CATI_1.1.4/router','Archivos/Audios/2016-11-29/');
@@ -48,7 +48,7 @@ module.exports = function(app, passport) {
     app.get('/audios',isLoggedInAdmin,function (req,res) {
         res.render('audios.html');
     });
-    app.post('/audios',function (req,res) {
+    app.post('/audios',isLoggedInAdmin,function (req,res) {
         var fs = require('fs');
 
         console.log(__dirname);
